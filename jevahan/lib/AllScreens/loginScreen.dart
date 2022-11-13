@@ -4,6 +4,7 @@ import 'package:jevahan/AllScreens/registrationScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:jevahan/main.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:jevahan/utilities/forgotPasswoordPage.dart';
 import 'package:jevahan/utilities/progressDialog.dart';
 import 'package:flutter/material.dart'; // ignore: unused_import
 import 'package:firebase_core/firebase_core.dart';
@@ -158,8 +159,24 @@ class LoginScreen extends StatelessWidget {
                   ],
                 ),
               ),
+              GestureDetector(
+                child: Text(
+                  'Forgot Password',
+                  style: GoogleFonts.cabin(
+                    textStyle: TextStyle(
+                      fontSize: 15.0,
+                      color: Color(0xFF062833),
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ),
+                onTap: () {
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, ForgotPasswordPage.idScreen, (route) => false);
+                },
+              ),
               SizedBox(
-                height: 8,
+                height: 24,
               ),
               Text(
                 "Don't have an Account?",

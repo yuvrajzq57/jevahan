@@ -307,7 +307,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
       // ignore: use_build_context_synchronously
       Navigator.pushNamedAndRemoveUntil(
-          context, MainScreen.idScreen, (route) => false);
+          context, LoginScreen.idScreen, (route) => false);
     } else {
       // ignore: use_build_context_synchronously
       Navigator.pop(context);

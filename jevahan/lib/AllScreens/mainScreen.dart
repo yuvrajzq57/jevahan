@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:jevahan/AllScreens/loginScreen.dart';
+import 'package:jevahan/AllScreens/splashScreen.dart';
 
 class MainScreen extends StatefulWidget {
   static const String idScreen = "mainScreen";
@@ -34,15 +37,22 @@ class _MainScreenState extends State<MainScreen> {
             BottomNavigationBarItem(
                 icon: IconButton(
                   icon: const Icon(Icons.favorite_border, color: Colors.white),
-                  onPressed: () => {},
+                  onPressed: () => {
+                    FirebaseAuth.instance.signOut(),
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, LoginScreen.idScreen, (route) => false)
+                  },
                 ),
-                label: ''),
+                label: 'Logout'),
             BottomNavigationBarItem(
                 icon: IconButton(
                   icon: const Icon(Icons.face, color: Colors.white),
-                  onPressed: () => {},
+                  onPressed: () => {
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, Splash.idScreen, (route) => false)
+                  },
                 ),
-                label: ''),
+                label: 'Splash Screen'),
           ],
           backgroundColor: Color(0xFF1b435d),
         ),

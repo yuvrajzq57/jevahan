@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:jevahan/AllScreens/mainscreen.dart';
+import 'package:jevahan/utilities/forgotPasswoordPage.dart';
 
 import 'AllScreens/splashScreen.dart';
 
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Brand Bold',
           primarySwatch: Colors.orange,
           visualDensity: VisualDensity.adaptivePlatformDensity),
+      // home: ForgotPasswordPage(),
       initialRoute: FirebaseAuth.instance.currentUser == null
           ? Splash.idScreen
           : MainScreen.idScreen,
@@ -34,6 +36,7 @@ class MyApp extends StatelessWidget {
         Splash.idScreen: (context) => Splash(),
         RegistrationScreen.idScreen: (context) => RegistrationScreen(),
         LoginScreen.idScreen: (context) => LoginScreen(),
+        ForgotPasswordPage.idScreen: (context) => ForgotPasswordPage(),
         GetStartedScreen.idScreen: (context) => GetStartedScreen(),
         MainScreen.idScreen: (context) => MainScreen(),
       },
