@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jevahan/AllScreens/getStartedScreen.dart';
 import 'package:jevahan/AllScreens/registrationScreen.dart';
 
 class Splash extends StatefulWidget {
@@ -19,7 +20,7 @@ class _SplashState extends State<Splash> {
   _navigatetohome() async {
     await Future.delayed(Duration(milliseconds: 1500), () {});
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => RegistrationScreen()));
+        context, MaterialPageRoute(builder: (context) => GetStartedScreen()));
   }
 
   Widget build(BuildContext context) {

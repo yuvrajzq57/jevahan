@@ -28,9 +28,10 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.orange,
           visualDensity: VisualDensity.adaptivePlatformDensity),
       initialRoute: FirebaseAuth.instance.currentUser == null
-          ? GetStartedScreen.idScreen
+          ? Splash.idScreen
           : MainScreen.idScreen,
       routes: {
+        Splash.idScreen: (context) => Splash(),
         RegistrationScreen.idScreen: (context) => RegistrationScreen(),
         LoginScreen.idScreen: (context) => LoginScreen(),
         GetStartedScreen.idScreen: (context) => GetStartedScreen(),
