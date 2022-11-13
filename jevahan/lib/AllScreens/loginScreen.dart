@@ -1,3 +1,4 @@
+import 'package:google_fonts/google_fonts.dart';
 import 'package:jevahan/AllScreens/mainScreen.dart';
 import 'package:jevahan/AllScreens/registrationScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -17,7 +18,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xFFCFD2CF),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -27,11 +28,25 @@ class LoginScreen extends StatelessWidget {
                 padding: EdgeInsets.all(40.0),
               ),
               const SizedBox(
-                height: 35.0,
+                height: 26.0,
               ),
-              const CircleAvatar(
-                backgroundImage: AssetImage("images/applogo.png"),
-                radius: 80.0,
+              Text(
+                "JeVahan",
+                style: GoogleFonts.poppins(
+                  textStyle: TextStyle(
+                      fontSize: 35.0,
+                      fontWeight: FontWeight.w700,
+                      color: Color(0xFF062833)),
+                ),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(
+                height: 47,
+              ),
+              Image(
+                image: AssetImage('images/applogo.png'),
+                height: 72,
+                width: 78,
               ),
               const Padding(
                 padding: EdgeInsets.all(12.0),
@@ -39,16 +54,18 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(
                 height: 1.0,
               ),
-              const Text(
-                "User Login",
-                style: TextStyle(
-                    fontSize: 26.0,
-                    fontFamily: "Brand Bold",
-                    fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center,
-              ),
+              // Text(
+              //   "Login",
+              //   style: GoogleFonts.poppins(
+              //     textStyle: TextStyle(
+              //         fontSize: 25.0,
+              //         fontWeight: FontWeight.w700,
+              //         color: Color(0xFF062833)),
+              //   ),
+              //   textAlign: TextAlign.center,
+              // ),
               Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(30.0),
                 child: Column(
                   children: [
                     const SizedBox(
@@ -57,7 +74,16 @@ class LoginScreen extends StatelessWidget {
                     TextField(
                       controller: emailTextEditingController,
                       keyboardType: TextInputType.emailAddress,
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: const Color(0xFFD9D9D9),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          borderSide: const BorderSide(
+                            color: Color(0xFF062833),
+                            width: 8,
+                          ),
+                        ),
                         labelText: "Email",
                         labelStyle: TextStyle(
                           fontFamily: "Brand Bold",
@@ -68,13 +94,18 @@ class LoginScreen extends StatelessWidget {
                       style: const TextStyle(fontSize: 14.0),
                     ),
                     const SizedBox(
-                      height: 1.0,
+                      height: 18.0,
                     ),
                     // ignore: prefer_const_constructors
                     TextField(
                       controller: passwordTextEditingController,
                       obscureText: true,
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Color(0xFFD9D9D9),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            borderSide: BorderSide(color: Color(0xFF062833))),
                         labelText: "Password",
                         labelStyle: TextStyle(
                           fontFamily: "Brand Bold",
@@ -88,22 +119,28 @@ class LoginScreen extends StatelessWidget {
                       padding: EdgeInsets.all(25.0),
                     ),
                     const SizedBox(
-                      height: 1.0,
+                      height: 0.0,
                     ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromARGB(255, 168, 186, 246),
+                        backgroundColor: Color(0xFF062833),
                         shape: const StadiumBorder(),
                       ),
                       child: Container(
                         height: 50.0,
                         width: 300.0,
-                        padding: const EdgeInsets.all(13.0),
-                        child: const Text(
-                          "Login",
-                          style: TextStyle(
-                              fontSize: 18.0, fontFamily: "Brand Bold"),
-                          textAlign: TextAlign.center,
+                        padding: const EdgeInsets.all(10.0),
+                        child: Center(
+                          child: Text(
+                            "Login",
+                            style: GoogleFonts.poppins(
+                              textStyle: TextStyle(
+                                  fontSize: 18.0,
+                                  fontWeight: FontWeight.w700,
+                                  color: Color(0xFFFFFFFF),
+                                  textBaseline: TextBaseline.ideographic),
+                            ),
+                          ),
                         ),
                       ),
                       onPressed: () {
@@ -121,17 +158,39 @@ class LoginScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              TextButton(
+              SizedBox(
+                height: 8,
+              ),
+              Text(
+                "Don't have an Account?",
+                style: GoogleFonts.cabin(
+                  textStyle:
+                      TextStyle(fontSize: 18.0, color: Color(0xFF062833)),
+                ),
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xFF062833),
+                  shape: const StadiumBorder(),
+                ),
                 onPressed: () {
                   Navigator.pushNamedAndRemoveUntil(
                       context, RegistrationScreen.idScreen, (route) => false);
                 },
-                child: const Text(
-                  "Don't have an Account? Register Here.",
-                  style: TextStyle(
-                      fontFamily: "Brand Bold", fontWeight: FontWeight.bold),
+                child: Container(
+                  height: 33.0,
+                  width: 92,
+                  padding: const EdgeInsets.all(8.0),
+                  child: const Text(
+                    "Sign in",
+                    style: TextStyle(
+                        fontSize: 14.0,
+                        fontFamily: "Brand Bold",
+                        color: Colors.white),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
-              ),
+              )
             ],
           ),
         ),

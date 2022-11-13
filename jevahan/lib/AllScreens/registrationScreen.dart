@@ -1,4 +1,5 @@
 import 'package:jevahan/AllScreens/loginScreen.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:jevahan/AllScreens/mainScreen.dart';
 import 'package:jevahan/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -30,21 +31,35 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(252, 240, 138, 138),
+      backgroundColor: Color(0xFFCFD2CF),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(2.0),
           child: Column(
             children: [
               const Padding(
-                padding: EdgeInsets.all(30.0),
+                padding: EdgeInsets.all(28.0),
               ),
               const SizedBox(
-                height: 35.0,
+                height: 20.0,
               ),
-              const CircleAvatar(
-                backgroundImage: AssetImage("images/applogo.png"),
-                radius: 80.0,
+              Text(
+                "JeVahan",
+                style: GoogleFonts.poppins(
+                  textStyle: TextStyle(
+                      fontSize: 35.0,
+                      fontWeight: FontWeight.w700,
+                      color: Color(0xFF062833)),
+                ),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(
+                height: 47,
+              ),
+              Image(
+                image: AssetImage('images/applogo.png'),
+                height: 72,
+                width: 78,
               ),
               const Padding(
                 padding: EdgeInsets.all(12.0),
@@ -52,16 +67,16 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               const SizedBox(
                 height: 1.0,
               ),
-              const Text(
-                "Register as new User",
-                style: TextStyle(
-                    fontSize: 26.0,
-                    fontFamily: "Brand Bold",
-                    fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center,
-              ),
+              // const Text(
+              //   "Register as new User",
+              //   style: TextStyle(
+              //       fontSize: 26.0,
+              //       fontFamily: "Brand Bold",
+              //       fontWeight: FontWeight.bold),
+              //   textAlign: TextAlign.center,
+              // ),
               Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(25.0),
                 child: Column(
                   children: [
                     const SizedBox(
@@ -73,7 +88,16 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         value = text;
                       },
                       keyboardType: TextInputType.text,
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: const Color(0xFFD9D9D9),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          borderSide: const BorderSide(
+                            color: Color(0xFF062833),
+                            width: 8,
+                          ),
+                        ),
                         labelText: "Name",
                         labelStyle: TextStyle(
                           fontFamily: "Brand Bold",
@@ -84,12 +108,21 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       style: const TextStyle(fontSize: 14.0),
                     ),
                     const SizedBox(
-                      height: 1.0,
+                      height: 4.0,
                     ),
                     TextField(
                       controller: emailTextEditingController,
                       keyboardType: TextInputType.emailAddress,
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: const Color(0xFFD9D9D9),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          borderSide: const BorderSide(
+                            color: Color(0xFF062833),
+                            width: 8,
+                          ),
+                        ),
                         labelText: "Email",
                         labelStyle: TextStyle(
                           fontFamily: "Brand Bold",
@@ -100,12 +133,21 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       style: const TextStyle(fontSize: 14.0),
                     ),
                     const SizedBox(
-                      height: 1.0,
+                      height: 4.0,
                     ),
                     TextField(
                       controller: phoneTextEditingController,
                       keyboardType: TextInputType.phone,
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: const Color(0xFFD9D9D9),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          borderSide: const BorderSide(
+                            color: Color(0xFF062833),
+                            width: 8,
+                          ),
+                        ),
                         labelText: "Phone",
                         labelStyle: TextStyle(
                           fontFamily: "Brand Bold",
@@ -116,13 +158,22 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       style: const TextStyle(fontSize: 14.0),
                     ),
                     const SizedBox(
-                      height: 1.0,
+                      height: 4.0,
                     ),
                     // ignore: prefer_const_constructors
                     TextField(
                       controller: passwordTextEditingController,
                       obscureText: true,
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: const Color(0xFFD9D9D9),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          borderSide: const BorderSide(
+                            color: Color(0xFF062833),
+                            width: 8,
+                          ),
+                        ),
                         labelText: "Password",
                         labelStyle: TextStyle(
                           fontFamily: "Brand Bold",
@@ -140,8 +191,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor:
-                            const Color.fromARGB(255, 246, 221, 120),
+                        backgroundColor: Color(0xFF062833),
                         shape: const StadiumBorder(),
                       ),
                       child: Container(
@@ -151,7 +201,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         child: const Text(
                           "Create Account",
                           style: TextStyle(
-                              fontSize: 18.0, fontFamily: "Brand Bold"),
+                              fontSize: 18.0,
+                              fontFamily: "Brand Bold",
+                              color: Color(0xFFFFFFFF)),
                           textAlign: TextAlign.center,
                         ),
                       ),
@@ -179,18 +231,37 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   ],
                 ),
               ),
-              TextButton(
+              SizedBox(
+                height: 4,
+              ),
+              const Text(
+                "Already have an Account?",
+                style: TextStyle(
+                    fontFamily: "Brand Bold", fontWeight: FontWeight.bold),
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xFF062833),
+                  shape: const StadiumBorder(),
+                ),
                 onPressed: () {
                   Navigator.pushNamedAndRemoveUntil(
                       context, LoginScreen.idScreen, (route) => false);
-                  // builder: (context) => MainScreen(value: value)
                 },
-                child: const Text(
-                  "Already have an Account? Login Here.",
-                  style: TextStyle(
-                      fontFamily: "Brand Bold", fontWeight: FontWeight.bold),
+                child: Container(
+                  height: 33.0,
+                  width: 92,
+                  padding: const EdgeInsets.all(8.0),
+                  child: const Text(
+                    "Login",
+                    style: TextStyle(
+                        fontSize: 14.0,
+                        fontFamily: "Brand Bold",
+                        color: Colors.white),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
-              ),
+              )
             ],
           ),
         ),

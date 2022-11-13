@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:jevahan/AllScreens/loginScreen.dart';
 import 'package:jevahan/AllScreens/registrationScreen.dart';
+import 'package:jevahan/AllScreens/getStartedScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:jevahan/AllScreens/mainscreen.dart';
+
+import 'AllScreens/splashScreen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,7 +27,15 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Brand Bold',
           primarySwatch: Colors.orange,
           visualDensity: VisualDensity.adaptivePlatformDensity),
-      home: MainScreen(),
+      initialRoute: FirebaseAuth.instance.currentUser == null
+          ? GetStartedScreen.idScreen
+          : MainScreen.idScreen,
+      routes: {
+        RegistrationScreen.idScreen: (context) => RegistrationScreen(),
+        LoginScreen.idScreen: (context) => LoginScreen(),
+        GetStartedScreen.idScreen: (context) => GetStartedScreen(),
+        MainScreen.idScreen: (context) => MainScreen(),
+      },
       debugShowCheckedModeBanner: false,
     );
   }
