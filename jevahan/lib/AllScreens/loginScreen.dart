@@ -198,13 +198,18 @@ class LoginScreen extends StatelessWidget {
                   height: 33.0,
                   width: 92,
                   padding: const EdgeInsets.all(8.0),
-                  child: const Text(
+                  child: Text(
                     "Sign in",
-                    style: TextStyle(
-                        fontSize: 14.0,
-                        fontFamily: "Brand Bold",
-                        color: Colors.white),
-                    textAlign: TextAlign.center,
+                    style: GoogleFonts.poppins(
+                        textStyle: TextStyle(
+                      fontSize: 14.0,
+                      color: Colors.white,
+                    )
+                        // style: TextStyle(
+                        //     fontSize: 14.0,
+                        //     fontFamily: "Brand Bold",
+                        //     color: Colors.white),
+                        ),
                   ),
                 ),
               )

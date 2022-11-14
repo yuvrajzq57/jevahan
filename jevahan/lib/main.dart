@@ -28,18 +28,18 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Brand Bold',
           primarySwatch: Colors.orange,
           visualDensity: VisualDensity.adaptivePlatformDensity),
-      // home: ForgotPasswordPage(),
-      initialRoute: FirebaseAuth.instance.currentUser == null
-          ? Splash.idScreen
-          : MainScreen.idScreen,
-      routes: {
-        Splash.idScreen: (context) => Splash(),
-        RegistrationScreen.idScreen: (context) => RegistrationScreen(),
-        LoginScreen.idScreen: (context) => LoginScreen(),
-        ForgotPasswordPage.idScreen: (context) => ForgotPasswordPage(),
-        GetStartedScreen.idScreen: (context) => GetStartedScreen(),
-        MainScreen.idScreen: (context) => MainScreen(),
-      },
+      home: MainScreen(),
+      // initialRoute: FirebaseAuth.instance.currentUser == null
+      //     ? Splash.idScreen
+      //     : MainScreen.idScreen,
+      // routes: {
+      //   Splash.idScreen: (context) => Splash(),
+      //   RegistrationScreen.idScreen: (context) => RegistrationScreen(),
+      //   LoginScreen.idScreen: (context) => LoginScreen(),
+      //   ForgotPasswordPage.idScreen: (context) => ForgotPasswordPage(),
+      //   GetStartedScreen.idScreen: (context) => GetStartedScreen(),
+      //   MainScreen.idScreen: (context) => MainScreen(),
+      // },
       debugShowCheckedModeBanner: false,
     );
   }
