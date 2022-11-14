@@ -108,7 +108,7 @@ class _MainScreenState extends State<MainScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           SizedBox(
-                            height: 10,
+                            height: 8,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -149,16 +149,16 @@ class _MainScreenState extends State<MainScreen> {
                                   ],
                                 ),
                                 Image.asset(
-                                  "images/applogo.png",
-                                  height: 32,
-                                  width: 32,
+                                  "images/services.jpeg",
+                                  height: 40,
+                                  width: 40,
                                 ),
                               ],
                             ),
                           ),
                         ],
                       ),
-                      height: 115,
+                      height: 125,
                       width: 315,
                       decoration: BoxDecoration(
                         color: Color(0xFFA7C5CE),
@@ -168,6 +168,200 @@ class _MainScreenState extends State<MainScreen> {
                       ),
                     ),
                   ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 8,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(20, 8, 0, 0),
+                              child: Text(
+                                "Emergency",
+                                style: GoogleFonts.poppins(
+                                  textStyle: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 32,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              width: 13,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(10, 8, 8, 8),
+                              child: Text(
+                                "Tap to book",
+                                style: GoogleFonts.poppins(
+                                  textStyle: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 20,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 70,
+                            ),
+                            Image.asset(
+                              "images/emergency.jpeg",
+                              height: 60,
+                              width: 60,
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                    height: 154,
+                    width: 315,
+                    decoration: BoxDecoration(
+                      color: Color(0xFFCD5F5F),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(20),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(13.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.fromLTRB(2, 15, 0, 10),
+                                child: Text(
+                                  "Mobile ICU",
+                                  style: GoogleFonts.poppins(
+                                    textStyle: TextStyle(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 20,
+                                        color: Colors.white),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 6,
+                              ),
+                              Image.asset(
+                                "images/mobile.jpeg",
+                                height: 60,
+                                width: 60,
+                              )
+                            ],
+                          ),
+                          height: 134,
+                          width: 142,
+                          decoration: BoxDecoration(
+                              color: Color(0xFFA7C5CE),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20))),
+                        ),
+                        Container(
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.fromLTRB(2, 15, 0, 10),
+                                child: Text(
+                                  "InterCity",
+                                  style: GoogleFonts.poppins(
+                                    textStyle: TextStyle(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 20,
+                                        color: Colors.white),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 6,
+                              ),
+                              Image.asset(
+                                "images/intercity.png",
+                                height: 60,
+                                width: 60,
+                              )
+                            ],
+                          ),
+                          height: 134,
+                          width: 142,
+                          decoration: BoxDecoration(
+                              color: Color(0xFFA7C5CE),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20))),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 3,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(13.0),
+                    child: Container(
+                      height: 120,
+                      width: 315,
+                      decoration: BoxDecoration(
+                          color: Color(0xFF8D689E),
+                          borderRadius: BorderRadius.all(Radius.circular(20))),
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(10, 0, 0, 10),
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(10, 14, 0, 10),
+                          child: Row(
+                            children: [
+                              Text(
+                                "Update your\nMedical files",
+                                style: GoogleFonts.poppins(
+                                  textStyle: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 25,
+                                      color: Colors.white),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 22,
+                              ),
+                              Image.asset(
+                                "images/hospital.png",
+                                height: 50,
+                                width: 50,
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
                 ],
               ),
             ),

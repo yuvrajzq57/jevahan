@@ -47,3 +47,30 @@ class _SplashState extends State<Splash> {
         ));
   }
 }
+
+
+// Padding(
+//                     padding: const EdgeInsets.all(13.0),
+//                     child: Container(
+//                       child: Row(
+//                         children: [
+//                           Padding(
+//                             padding: const EdgeInsets.fromLTRB(28, 6, 10, 10),
+//                             child: Text(
+//                               "Upload your \n Medical files",
+//                               style: GoogleFonts.poppins(
+//                                   textStyle: TextStyle(
+//                                       fontWeight: FontWeight.w700,
+//                                       fontSize: 25,
+//                                       color: Colors.white)),
+//                             ),
+//                           ),
+//                         ],
+//                       ),
+//                       height: 120,
+//                       width: 302,
+//                       decoration: BoxDecoration(
+//                           color: Color(0xFF8D689E),
+//                           borderRadius: BorderRadius.all(Radius.circular(20))),
+//                     ),
+//                   )
