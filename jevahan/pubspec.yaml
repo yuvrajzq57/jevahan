@@ -78,6 +78,8 @@ flutter:
     - images/services.jpeg
     - images/intercity.png
     - images/emergency.jpeg
+    - images/user.png
+    - images/servicesmain.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
