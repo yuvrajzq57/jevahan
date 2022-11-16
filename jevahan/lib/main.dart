@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jevahan/AllScreens/contactScreen.dart';
+import 'package:jevahan/AllScreens/homeScreenPage.dart';
 import 'package:jevahan/AllScreens/loginScreen.dart';
 import 'package:jevahan/AllScreens/medicalFilesScreen.dart';
 import 'package:jevahan/AllScreens/registrationScreen.dart';
@@ -31,21 +32,21 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Brand Bold',
           primarySwatch: Colors.orange,
           visualDensity: VisualDensity.adaptivePlatformDensity),
-      // home: medicalFilesScreen(),
-      initialRoute: FirebaseAuth.instance.currentUser == null
-          ? Splash.idScreen
-          : MainScreen.idScreen,
-      routes: {
-        Splash.idScreen: (context) => Splash(),
-        RegistrationScreen.idScreen: (context) => RegistrationScreen(),
-        LoginScreen.idScreen: (context) => LoginScreen(),
-        ForgotPasswordPage.idScreen: (context) => ForgotPasswordPage(),
-        GetStartedScreen.idScreen: (context) => GetStartedScreen(),
-        MainScreen.idScreen: (context) => MainScreen(),
-        medicalFilesScreen.idScreen: (context) => medicalFilesScreen(),
-        ContactScreen.idScreen: (context) => ContactScreen(),
-        servicesScreen.idScreen: (context) => servicesScreen(),
-      },
+      home: homeScreenPage(),
+      // initialRoute: FirebaseAuth.instance.currentUser == null
+      //     ? Splash.idScreen
+      //     : MainScreen.idScreen,
+      // routes: {
+      //   Splash.idScreen: (context) => Splash(),
+      //   RegistrationScreen.idScreen: (context) => RegistrationScreen(),
+      //   LoginScreen.idScreen: (context) => LoginScreen(),
+      //   ForgotPasswordPage.idScreen: (context) => ForgotPasswordPage(),
+      //   GetStartedScreen.idScreen: (context) => GetStartedScreen(),
+      //   MainScreen.idScreen: (context) => MainScreen(),
+      //   medicalFilesScreen.idScreen: (context) => medicalFilesScreen(),
+      //   ContactScreen.idScreen: (context) => ContactScreen(),
+      //   servicesScreen.idScreen: (context) => servicesScreen(),
+      // },
       debugShowCheckedModeBanner: false,
     );
   }
