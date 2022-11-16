@@ -47,6 +47,8 @@ dependencies:
   confetti: ^0.7.0
   google_fonts: ^3.0.1
   email_validator: ^2.1.17
+  google_maps_flutter: ^2.2.1
+  flutter_map: ^3.0.0
 
 dev_dependencies:
   flutter_test:
