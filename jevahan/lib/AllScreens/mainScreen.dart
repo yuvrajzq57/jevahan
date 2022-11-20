@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jevahan/AllScreens/contactScreen.dart';
 import 'package:jevahan/AllScreens/getStartedScreen.dart';
+import 'package:jevahan/AllScreens/homeScreenPage.dart';
 import 'package:jevahan/AllScreens/loginScreen.dart';
 import 'package:jevahan/AllScreens/medicalFilesScreen.dart';
 import 'package:jevahan/AllScreens/servicesScreen.dart';
@@ -176,75 +177,82 @@ class _MainScreenState extends State<MainScreen> {
                       SizedBox(
                         height: 10,
                       ),
-                      Container(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            SizedBox(
-                              height: 8,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(20, 8, 0, 0),
-                                  child: Text(
-                                    "Emergency",
-                                    style: GoogleFonts.poppins(
-                                      textStyle: TextStyle(
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 32,
-                                        color: Colors.white,
+                      GestureDetector(
+                        child: Container(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                height: 8,
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(20, 8, 0, 0),
+                                    child: Text(
+                                      "Emergency",
+                                      style: GoogleFonts.poppins(
+                                        textStyle: TextStyle(
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 32,
+                                          color: Colors.white,
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                SizedBox(
-                                  width: 13,
-                                ),
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(10, 8, 8, 8),
-                                  child: Text(
-                                    "Tap to book",
-                                    style: GoogleFonts.poppins(
-                                      textStyle: TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 20,
-                                        color: Colors.white,
+                                  SizedBox(
+                                    width: 5,
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    width: 13,
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(10, 8, 8, 8),
+                                    child: Text(
+                                      "Tap to book",
+                                      style: GoogleFonts.poppins(
+                                        textStyle: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 20,
+                                          color: Colors.white,
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                                SizedBox(
-                                  width: 70,
-                                ),
-                                Image.asset(
-                                  "images/emergency.jpeg",
-                                  height: 60,
-                                  width: 60,
-                                )
-                              ],
-                            )
-                          ],
-                        ),
-                        height: 154,
-                        width: 315,
-                        decoration: BoxDecoration(
-                          color: Color(0xFFCD5F5F),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(20),
+                                  SizedBox(
+                                    width: 70,
+                                  ),
+                                  Image.asset(
+                                    "images/emergency.jpeg",
+                                    height: 60,
+                                    width: 60,
+                                  )
+                                ],
+                              )
+                            ],
+                          ),
+                          height: 154,
+                          width: 315,
+                          decoration: BoxDecoration(
+                            color: Color(0xFFCD5F5F),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(20),
+                            ),
                           ),
                         ),
+                        onTap: () {
+                          Navigator.pushNamedAndRemoveUntil(context,
+                              homeScreenPage.idScreen, (route) => false);
+                        },
                       ),
                       SizedBox(
                         height: 10,
