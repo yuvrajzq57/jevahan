@@ -5,10 +5,12 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:jevahan/AllScreens/mainScreen.dart';
+import 'package:jevahan/AllScreens/searchscreen.dart';
 import 'package:jevahan/AllScreens/sideScreen.dart';
 import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
 import 'package:google_maps_flutter_platform_interface/google_maps_flutter_platform_interface.dart';
 import 'package:google_maps_flutter_platform_interface/src/types/camera.dart';
+import 'package:jevahan/assistants/assistantmethods.dart';
 
 class homeScreenPage extends StatefulWidget {
   static const String idScreen = "homescreen";
@@ -40,6 +42,9 @@ class _homeScreenPageState extends State<homeScreenPage> {
 
     newGoogleMapController
         .animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
+
+    // String address = await Assistantmethods.searchCoordinateAddress(position, context);
+    // print("This is your address " + address);
   }
 
   static final CameraPosition _kGooglePlex = CameraPosition(
@@ -124,36 +129,42 @@ class _homeScreenPageState extends State<homeScreenPage> {
           //           SizedBox(
           //             height: 20.0,
           //           ),
-          //           Container(
-          //             height: 66,
-          //             width: 319,
-          //             alignment: Alignment.center,
-          //             child: Padding(
-          //               padding: const EdgeInsets.all(8.0),
-          //               child: Row(
-          //                 children: [
-          //                   Icon(Icons.search),
-          //                   SizedBox(
-          //                     width: 8,
-          //                   ),
-          //                   Text(
-          //                     "Search your hospital",
-          //                     style: GoogleFonts.poppins(
-          //                         textStyle: TextStyle(
-          //                             fontSize: 18,
-          //                             fontWeight: FontWeight.w500,
-          //                             color: Color(0xFF062833))),
-          //                   ),
-          //                 ],
-          //               ),
-          //             ),
-          //             decoration: BoxDecoration(
-          //               color: Color(0xFFD8ECF2),
-          //               borderRadius: BorderRadius.all(
-          //                 Radius.circular(18.0),
-          //               ),
-          //             ),
-          //           ),
+          GestureDetector(
+            onTap: () => {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const SearchScreen()))
+            },
+            child: Container(
+              height: 66,
+              width: 319,
+              alignment: Alignment.center,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Icon(Icons.search),
+                    SizedBox(
+                      width: 8,
+                    ),
+                    Text(
+                      "Search your hospital",
+                      style: GoogleFonts.poppins(
+                          textStyle: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xFF062833))),
+                    ),
+                  ],
+                ),
+              ),
+              decoration: BoxDecoration(
+                color: Color(0xFFD8ECF2),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(18.0),
+                ),
+              ),
+            ),
+          ),
           //           SizedBox(
           //             height: 2,
           //           ),

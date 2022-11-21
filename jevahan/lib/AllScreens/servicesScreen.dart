@@ -9,6 +9,23 @@ class servicesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xFF062833),
+        // title: Icon(
+        //   Icons.arrow_back,
+        //   color: Colors.white,
+        // ),
+        title: IconButton(
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Color(0xFFFFFFFF),
+          ),
+          onPressed: () => {
+            Navigator.pushNamedAndRemoveUntil(
+                context, MainScreen.idScreen, (route) => false),
+          },
+        ),
+      ),
       // appBar: AppBar(
       //   backgroundColor: Color(0xFF062833),
       //   // title: Icon(
