@@ -25,7 +25,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   TextEditingController phoneTextEditingController = TextEditingController();
 
   TextEditingController passwordTextEditingController = TextEditingController();
-
+  bool _obsecureText = true;
   late String value;
 
   @override
@@ -163,8 +163,18 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     // ignore: prefer_const_constructors
                     TextField(
                       controller: passwordTextEditingController,
-                      obscureText: true,
+                      obscureText: _obsecureText,
                       decoration: InputDecoration(
+                        suffixIcon: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              _obsecureText = !_obsecureText;
+                            });
+                          },
+                          child: Icon(_obsecureText
+                              ? Icons.visibility_off
+                              : Icons.visibility),
+                        ),
                         filled: true,
                         fillColor: const Color(0xFFD9D9D9),
                         border: OutlineInputBorder(
@@ -251,14 +261,15 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 child: Container(
                   height: 33.0,
                   width: 92,
-                  padding: const EdgeInsets.all(8.0),
-                  child: const Text(
-                    "Login",
-                    style: TextStyle(
-                        fontSize: 14.0,
-                        fontFamily: "Brand Bold",
-                        color: Colors.white),
-                    textAlign: TextAlign.center,
+                  child: const Center(
+                    child: Text(
+                      "Login",
+                      style: TextStyle(
+                          fontSize: 14.0,
+                          fontFamily: "Brand Bold",
+                          color: Colors.white),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                 ),
               )

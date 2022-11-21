@@ -10,11 +10,19 @@ import 'package:flutter/material.dart'; // ignore: unused_import
 import 'package:firebase_core/firebase_core.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   static const String idScreen = "login";
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   TextEditingController emailTextEditingController = TextEditingController();
+
   TextEditingController passwordTextEditingController = TextEditingController();
+
+  bool _obsecureText = true;
 
   @override
   Widget build(BuildContext context) {
@@ -98,23 +106,35 @@ class LoginScreen extends StatelessWidget {
                       height: 18.0,
                     ),
                     // ignore: prefer_const_constructors
-                    TextField(
-                      controller: passwordTextEditingController,
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Color(0xFFD9D9D9),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                            borderSide: BorderSide(color: Color(0xFF062833))),
-                        labelText: "Password",
-                        labelStyle: TextStyle(
-                          fontFamily: "Brand Bold",
-                          color: Colors.grey,
-                          fontSize: 10.0,
+                    GestureDetector(
+                      child: TextField(
+                        controller: passwordTextEditingController,
+                        obscureText: _obsecureText,
+                        decoration: InputDecoration(
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                _obsecureText = !_obsecureText;
+                              });
+                            },
+                            child: Icon(_obsecureText
+                                ? Icons.visibility_off
+                                : Icons.visibility),
+                          ),
+                          filled: true,
+                          fillColor: Color(0xFFD9D9D9),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(color: Color(0xFF062833))),
+                          labelText: "Password",
+                          labelStyle: TextStyle(
+                            fontFamily: "Brand Bold",
+                            color: Colors.grey,
+                            fontSize: 10.0,
+                          ),
                         ),
+                        style: const TextStyle(fontSize: 14.0),
                       ),
-                      style: const TextStyle(fontSize: 14.0),
                     ),
                     const Padding(
                       padding: EdgeInsets.all(25.0),
@@ -197,19 +217,20 @@ class LoginScreen extends StatelessWidget {
                 child: Container(
                   height: 33.0,
                   width: 92,
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    "Sign in",
-                    style: GoogleFonts.poppins(
-                        textStyle: TextStyle(
-                      fontSize: 14.0,
-                      color: Colors.white,
-                    )
-                        // style: TextStyle(
-                        //     fontSize: 14.0,
-                        //     fontFamily: "Brand Bold",
-                        //     color: Colors.white),
-                        ),
+                  child: Center(
+                    child: Text(
+                      "Sign in",
+                      style: GoogleFonts.poppins(
+                          textStyle: TextStyle(
+                        fontSize: 14.0,
+                        color: Colors.white,
+                      )
+                          // style: TextStyle(
+                          //     fontSize: 14.0,
+                          //     fontFamily: "Brand Bold",
+                          //     color: Colors.white),
+                          ),
+                    ),
                   ),
                 ),
               )
@@ -221,6 +242,7 @@ class LoginScreen extends StatelessWidget {
   }
 
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+
   void loginAndAutheticateUser(BuildContext context) async {
     showDialog(
         context: context,
