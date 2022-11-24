@@ -29,6 +29,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   late String value;
 
   @override
+  void dispose() {
+    nameTextEditingController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFCFD2CF),
@@ -67,14 +73,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               const SizedBox(
                 height: 1.0,
               ),
-              // const Text(
-              //   "Register as new User",
-              //   style: TextStyle(
-              //       fontSize: 26.0,
-              //       fontFamily: "Brand Bold",
-              //       fontWeight: FontWeight.bold),
-              //   textAlign: TextAlign.center,
-              // ),
               Padding(
                 padding: const EdgeInsets.all(25.0),
                 child: Column(

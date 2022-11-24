@@ -46,9 +46,6 @@ class servicesScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
-              height: 40,
-            ),
             Image.asset("images/servicesmain.jpeg"),
             SizedBox(
               height: 23,
@@ -68,7 +65,7 @@ class servicesScreen extends StatelessWidget {
               child: Row(
                 children: [
                   Image.asset(
-                    "images/emergency.jpeg",
+                    "images/emergency.png",
                     height: 30,
                     width: 30,
                   ),
@@ -90,7 +87,7 @@ class servicesScreen extends StatelessWidget {
               child: Row(
                 children: [
                   Image.asset(
-                    "images/emergency.jpeg",
+                    "images/emergency.png",
                     height: 30,
                     width: 30,
                   ),
@@ -112,7 +109,7 @@ class servicesScreen extends StatelessWidget {
               child: Row(
                 children: [
                   Image.asset(
-                    "images/emergency.jpeg",
+                    "images/emergency.png",
                     height: 30,
                     width: 30,
                   ),

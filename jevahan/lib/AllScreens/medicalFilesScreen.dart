@@ -16,35 +16,35 @@ class medicalFilesScreen extends StatefulWidget {
 }
 
 class _medicalFilesScreenState extends State<medicalFilesScreen> {
-  PlatformFile? pickedFile;
-  UploadTask? uploadTask;
+  // PlatformFile? pickedFile;
+  // UploadTask? uploadTask;
 
-  Future uploadFile() async {
-    final path = 'files/${pickedFile!.name}';
-    final file = File(pickedFile!.path!);
+  // Future uploadFile() async {
+  //   final path = 'files/${pickedFile!.name}';
+  //   final file = File(pickedFile!.path!);
 
-    final ref = FirebaseStorage.instance.ref().child(path);
-    setState(() {
-      uploadTask = ref.putFile(file);
-    });
+  //   final ref = FirebaseStorage.instance.ref().child(path);
+  //   setState(() {
+  //     uploadTask = ref.putFile(file);
+  //   });
 
-    final snapshot = await uploadTask!.whenComplete(() {});
+  //   final snapshot = await uploadTask!.whenComplete(() {});
 
-    final urlDownload = await snapshot.ref.getDownloadURL();
-    print('Donwload Link: $urlDownload');
-    setState(() {
-      uploadTask = null;
-    });
-  }
+  //   final urlDownload = await snapshot.ref.getDownloadURL();
+  //   print('Donwload Link: $urlDownload');
+  //   setState(() {
+  //     uploadTask = null;
+  //   });
+  // }
 
-  Future selectFile() async {
-    final result = await FilePicker.platform.pickFiles();
-    if (result == null) return;
+  // Future selectFile() async {
+  //   final result = await FilePicker.platform.pickFiles();
+  //   if (result == null) return;
 
-    setState(() {
-      pickedFile = result.files.first;
-    });
-  }
+  //   setState(() {
+  //     pickedFile = result.files.first;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -119,7 +119,7 @@ class _medicalFilesScreenState extends State<medicalFilesScreen> {
                   ),
                 ),
                 onTap: () {
-                  selectFile;
+                  // selectFile;
                 },
               ),
               SizedBox(
@@ -139,22 +139,22 @@ class _medicalFilesScreenState extends State<medicalFilesScreen> {
                         size: 50,
                       ),
                       onTap: () {
-                        uploadFile;
+                        // uploadFile;
                       },
                     ),
                   ],
                 ),
               ),
-              if (pickedFile != null)
-                Expanded(
-                  child: Container(
-                    color: Colors.grey[200],
-                    child: Center(
-                      child: Text(pickedFile!.name),
-                    ),
-                  ),
-                ),
-              buildProgress(),
+              // if (pickedFile != null)
+              //   Expanded(
+              //     child: Container(
+              //       color: Colors.grey[200],
+              //       child: Center(
+              //         child: Text(pickedFile!.name),
+              //       ),
+              //     ),
+              //   ),
+              // buildProgress(),
             ],
           ),
         ),
@@ -162,39 +162,39 @@ class _medicalFilesScreenState extends State<medicalFilesScreen> {
     );
   }
 
-  Widget buildProgress() => StreamBuilder<TaskSnapshot>(
-        stream: uploadTask?.snapshotEvents,
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            final data = snapshot.data!;
-            double progress = data.bytesTransferred / data.totalBytes;
+  // Widget buildProgress() => StreamBuilder<TaskSnapshot>(
+  //       stream: uploadTask?.snapshotEvents,
+  //       builder: (context, snapshot) {
+  //         if (snapshot.hasData) {
+  //           final data = snapshot.data!;
+  //           double progress = data.bytesTransferred / data.totalBytes;
 
-            return SizedBox(
-              height: 50,
-              child: Stack(
-                fit: StackFit.expand,
-                children: [
-                  LinearProgressIndicator(
-                    value: progress,
-                    backgroundColor: Colors.grey,
-                    color: Color(0xFF062833),
-                  ),
-                  Center(
-                    child: Text(
-                      '${(100 * progress).roundToDouble()}%',
-                      style: const TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ],
-              ),
-            );
-          } else {
-            return const SizedBox(
-              height: 50,
-            );
-          }
-        },
-      );
+  //           return SizedBox(
+  //             height: 50,
+  //             child: Stack(
+  //               fit: StackFit.expand,
+  //               children: [
+  //                 LinearProgressIndicator(
+  //                   value: progress,
+  //                   backgroundColor: Colors.grey,
+  //                   color: Color(0xFF062833),
+  //                 ),
+  //                 Center(
+  //                   child: Text(
+  //                     '${(100 * progress).roundToDouble()}%',
+  //                     style: const TextStyle(color: Colors.white),
+  //                   ),
+  //                 ),
+  //               ],
+  //             ),
+  //           );
+  //         } else {
+  //           return const SizedBox(
+  //             height: 50,
+  //           );
+  //         }
+  //       },
+  //     );
 }
 
 

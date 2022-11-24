@@ -14,7 +14,7 @@ class Assistantmethods {
     String placeID = " ";
     String st1, st2, st3, st4;
     String url =
-        "https://maps.googleapis.com/maps/api/geocode/json?latlang=${position.latitude},${position.longitude}&key=AIzaSyBijyuacRH-srkU_2IQj8V4UyfM5nysbRQ";
+        "https://maps.googleapis.com/maps/api/geocode/json?latlang=${position.latitude},${position.longitude},+CA&key=AIzaSyBijyuacRH-srkU_2IQj8V4UyfM5nysbRQ";
 
     var response = await requestassistant.getRequest(url);
 

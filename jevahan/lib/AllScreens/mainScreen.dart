@@ -8,6 +8,8 @@ import 'package:jevahan/AllScreens/getStartedScreen.dart';
 import 'package:jevahan/AllScreens/homeScreenPage.dart';
 import 'package:jevahan/AllScreens/loginScreen.dart';
 import 'package:jevahan/AllScreens/medicalFilesScreen.dart';
+import 'package:jevahan/AllScreens/optionsIntercity.dart';
+import 'package:jevahan/AllScreens/optionsMobileICU.dart';
 import 'package:jevahan/AllScreens/servicesScreen.dart';
 import 'package:jevahan/AllScreens/splashScreen.dart';
 import 'package:jevahan/AllScreens/sideScreen.dart';
@@ -108,7 +110,7 @@ class _MainScreenState extends State<MainScreen> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 SizedBox(
-                                  height: 8,
+                                  height: 15,
                                 ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -121,14 +123,22 @@ class _MainScreenState extends State<MainScreen> {
                                       style: GoogleFonts.poppins(
                                           textStyle: TextStyle(
                                               fontSize: 28,
-                                              fontWeight: FontWeight.w500,
-                                              color: Color(0xFFFFEBEB))),
+                                              fontWeight: FontWeight.w700,
+                                              color: Colors.white)),
+                                    ),
+                                    SizedBox(
+                                      width: 15,
+                                    ),
+                                    Image.asset(
+                                      "images/services.png",
+                                      height: 50,
+                                      width: 50,
                                     ),
                                   ],
                                 ),
                                 Padding(
                                   padding:
-                                      const EdgeInsets.fromLTRB(20, 7, 0, 24),
+                                      const EdgeInsets.fromLTRB(20, 15, 0, 24),
                                   child: Row(
                                     children: [
                                       Text(
@@ -149,20 +159,24 @@ class _MainScreenState extends State<MainScreen> {
                                           ),
                                         ],
                                       ),
-                                      Image.asset(
-                                        "images/services.jpeg",
-                                        height: 40,
-                                        width: 40,
-                                      ),
                                     ],
                                   ),
                                 ),
                               ],
                             ),
-                            height: 125,
+                            height: 128,
                             width: 315,
                             decoration: BoxDecoration(
                               color: Color(0xFFA7C5CE),
+                              boxShadow: [
+                                BoxShadow(
+                                    blurRadius: 14.0,
+                                    color: Color.fromARGB(255, 198, 194, 194),
+                                    offset: Offset(
+                                      10,
+                                      10,
+                                    )),
+                              ],
                               borderRadius: BorderRadius.all(
                                 Radius.circular(20),
                               ),
@@ -203,10 +217,18 @@ class _MainScreenState extends State<MainScreen> {
                                       ),
                                     ),
                                   ),
+                                  Image.asset(
+                                    "images/emergency.png",
+                                    height: 60,
+                                    width: 60,
+                                  ),
                                   SizedBox(
                                     width: 5,
                                   ),
                                 ],
+                              ),
+                              SizedBox(
+                                height: 12,
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -231,11 +253,6 @@ class _MainScreenState extends State<MainScreen> {
                                   SizedBox(
                                     width: 70,
                                   ),
-                                  Image.asset(
-                                    "images/emergency.jpeg",
-                                    height: 60,
-                                    width: 60,
-                                  )
                                 ],
                               )
                             ],
@@ -243,6 +260,15 @@ class _MainScreenState extends State<MainScreen> {
                           height: 154,
                           width: 315,
                           decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                  blurRadius: 14.0,
+                                  color: Color.fromARGB(255, 198, 194, 194),
+                                  offset: Offset(
+                                    10,
+                                    10,
+                                  )),
+                            ],
                             color: Color(0xFFCD5F5F),
                             borderRadius: BorderRadius.all(
                               Radius.circular(20),
@@ -258,81 +284,115 @@ class _MainScreenState extends State<MainScreen> {
                         height: 10,
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(13.0),
+                        padding: const EdgeInsets.fromLTRB(27, 15, 27, 8),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Container(
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(2, 15, 0, 10),
-                                    child: Text(
-                                      "Mobile ICU",
-                                      style: GoogleFonts.poppins(
-                                        textStyle: TextStyle(
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: 20,
-                                            color: Colors.white),
+                            GestureDetector(
+                              child: Container(
+                                child: Column(
+                                  children: [
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                          2, 15, 0, 18),
+                                      child: Text(
+                                        "Mobile ICU",
+                                        style: GoogleFonts.poppins(
+                                          textStyle: TextStyle(
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 20,
+                                              color: Colors.white),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  SizedBox(
-                                    height: 6,
-                                  ),
-                                  Image.asset(
-                                    "images/mobile.jpeg",
-                                    height: 60,
-                                    width: 60,
-                                  )
-                                ],
+                                    SizedBox(
+                                      height: 6,
+                                    ),
+                                    Image.asset(
+                                      "images/mobile.png",
+                                      height: 60,
+                                      width: 60,
+                                    )
+                                  ],
+                                ),
+                                height: 134,
+                                width: 142,
+                                decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                          blurRadius: 14.0,
+                                          color: Color.fromARGB(
+                                              255, 198, 194, 194),
+                                          offset: Offset(
+                                            10,
+                                            10,
+                                          )),
+                                    ],
+                                    color: Color(0xFFA7C5CE),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20))),
                               ),
-                              height: 134,
-                              width: 142,
-                              decoration: BoxDecoration(
-                                  color: Color(0xFFA7C5CE),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20))),
+                              onTap: () {
+                                Navigator.pushNamedAndRemoveUntil(context,
+                                    optionMobileICU.idScreen, (route) => false);
+                              },
                             ),
-                            Container(
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(2, 15, 0, 10),
-                                    child: Text(
-                                      "InterCity",
-                                      style: GoogleFonts.poppins(
-                                        textStyle: TextStyle(
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: 20,
-                                            color: Colors.white),
+                            GestureDetector(
+                              child: Container(
+                                child: Column(
+                                  children: [
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                          2, 15, 0, 18),
+                                      child: Text(
+                                        "InterCity",
+                                        style: GoogleFonts.poppins(
+                                          textStyle: TextStyle(
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 20,
+                                              color: Colors.white),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  SizedBox(
-                                    height: 6,
-                                  ),
-                                  Image.asset(
-                                    "images/intercity.png",
-                                    height: 60,
-                                    width: 60,
-                                  )
-                                ],
+                                    SizedBox(
+                                      height: 6,
+                                    ),
+                                    Image.asset(
+                                      "images/intercity.png",
+                                      height: 60,
+                                      width: 60,
+                                    )
+                                  ],
+                                ),
+                                height: 134,
+                                width: 142,
+                                decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                          blurRadius: 14.0,
+                                          color: Color.fromARGB(
+                                              255, 198, 194, 194),
+                                          offset: Offset(
+                                            10,
+                                            10,
+                                          )),
+                                    ],
+                                    color: Color(0xFFA7C5CE),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20))),
                               ),
-                              height: 134,
-                              width: 142,
-                              decoration: BoxDecoration(
-                                  color: Color(0xFFA7C5CE),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20))),
+                              onTap: () {
+                                Navigator.pushNamedAndRemoveUntil(
+                                    context,
+                                    optionsIntercity.idScreen,
+                                    (route) => false);
+                              },
                             ),
                           ],
                         ),
@@ -347,6 +407,15 @@ class _MainScreenState extends State<MainScreen> {
                             height: 120,
                             width: 315,
                             decoration: BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                      blurRadius: 14.0,
+                                      color: Color.fromARGB(255, 198, 194, 194),
+                                      offset: Offset(
+                                        10,
+                                        10,
+                                      )),
+                                ],
                                 color: Color(0xFF8D689E),
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20))),
@@ -367,7 +436,7 @@ class _MainScreenState extends State<MainScreen> {
                                       ),
                                     ),
                                     SizedBox(
-                                      width: 22,
+                                      width: 40,
                                     ),
                                     Image.asset(
                                       "images/hospital.png",
@@ -398,7 +467,7 @@ class _MainScreenState extends State<MainScreen> {
                     icon: IconButton(
                       icon: const Icon(
                         Icons.person,
-                        color: Color(0xFFFFFFFF),
+                        color: Color(0xFF062833),
                         size: 30,
                       ),
                       onPressed: () => {scaffoldKey.currentState?.openDrawer()},
@@ -406,13 +475,12 @@ class _MainScreenState extends State<MainScreen> {
                     label: ''),
                 BottomNavigationBarItem(
                     icon: IconButton(
-                      icon: const Icon(
-                        Icons.home_rounded,
-                        color: Color(0xFF062833),
-                        size: 30,
-                      ),
-                      onPressed: () => {},
-                    ),
+                        icon: const Icon(
+                          Icons.home_rounded,
+                          color: Color(0xFFFFFFFF),
+                          size: 30,
+                        ),
+                        onPressed: () => {}),
                     label: ''),
               ],
             ),

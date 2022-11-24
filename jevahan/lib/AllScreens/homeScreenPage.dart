@@ -5,6 +5,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:jevahan/AllScreens/mainScreen.dart';
+import 'package:jevahan/AllScreens/searchAmbulanceScreen;.dart';
 import 'package:jevahan/AllScreens/searchscreen.dart';
 import 'package:jevahan/AllScreens/sideScreen.dart';
 import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
@@ -90,7 +91,7 @@ class _homeScreenPageState extends State<homeScreenPage> {
       body: Stack(
         children: [
           GoogleMap(
-            // padding: EdgeInsets.only(bottom: bottomPaddingOfMap),
+            padding: EdgeInsets.only(bottom: bottomPaddingOfMap),
             mapType: MapType.normal,
             zoomGesturesEnabled: true,
             zoomControlsEnabled: true,
@@ -100,9 +101,9 @@ class _homeScreenPageState extends State<homeScreenPage> {
             onMapCreated: (GoogleMapController controller) {
               _controllerGoogleMap.complete(controller);
               newGoogleMapController = controller;
-              // setState(() {
-              //   bottomPaddingOfMap = 0.0;
-              // });
+              setState(() {
+                bottomPaddingOfMap = 0.0;
+              });
               locatePosition();
             },
           ),
@@ -121,7 +122,7 @@ class _homeScreenPageState extends State<homeScreenPage> {
             bottom: 0.0,
             child: Container(
               height: 210.0,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(22.0),
@@ -143,6 +144,46 @@ class _homeScreenPageState extends State<homeScreenPage> {
                   children: [
                     SizedBox(
                       height: 20.0,
+                    ),
+                    SizedBox(),
+                    GestureDetector(
+                      onTap: () => {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => searchAmbulanceScreen()))
+                      },
+                      child: Container(
+                        height: 66,
+                        width: 319,
+                        alignment: Alignment.center,
+                        child: Padding(
+                          padding: const EdgeInsets.all(21.0),
+                          child: Row(
+                            children: [
+                              Center(
+                                child: Text(
+                                  "Book your nearest Ambulance",
+                                  style: GoogleFonts.poppins(
+                                      textStyle: TextStyle(
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.w500,
+                                          color: Color(0xFF062833))),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        decoration: BoxDecoration(
+                          color: Color(0xFFD8ECF2),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(18.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 18,
                     ),
                     GestureDetector(
                       onTap: () => {
@@ -182,6 +223,7 @@ class _homeScreenPageState extends State<homeScreenPage> {
                         ),
                       ),
                     ),
+
                     //           SizedBox(
                     //             height: 2,
                     //           ),

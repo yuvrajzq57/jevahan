@@ -82,10 +82,10 @@ flutter:
   assets:
     - images/applogo.png
     - images/hospital.png
-    - images/mobile.jpeg
-    - images/services.jpeg
+    - images/mobile.png
+    - images/services.png
     - images/intercity.png
-    - images/emergency.jpeg
+    - images/emergency.png
     - images/user.png
     - images/servicesmain.jpeg
 

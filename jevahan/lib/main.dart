@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:jevahan/AllScreens/bookedAmbulanceScreen.dart';
 import 'package:jevahan/AllScreens/contactScreen.dart';
 import 'package:jevahan/AllScreens/homeScreenPage.dart';
 import 'package:jevahan/AllScreens/loginScreen.dart';
 import 'package:jevahan/AllScreens/mainScreen.dart';
 import 'package:jevahan/AllScreens/medicalFilesScreen.dart';
+import 'package:jevahan/AllScreens/mobileicuhomescreen.dart';
+import 'package:jevahan/AllScreens/optionsIntercity.dart';
+import 'package:jevahan/AllScreens/optionsMobileICU.dart';
 import 'package:jevahan/AllScreens/registrationScreen.dart';
 import 'package:jevahan/AllScreens/getStartedScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:jevahan/AllScreens/searchAmbulanceScreen;.dart';
 import 'package:jevahan/AllScreens/servicesScreen.dart';
 import 'package:jevahan/datahandler/appdata.dart';
 import 'package:jevahan/utilities/forgotPasswoordPage.dart';
@@ -51,6 +56,11 @@ class MyApp extends StatelessWidget {
           ContactScreen.idScreen: (context) => ContactScreen(),
           servicesScreen.idScreen: (context) => servicesScreen(),
           homeScreenPage.idScreen: (context) => homeScreenPage(),
+          searchAmbulanceScreen.idScreen: (context) => searchAmbulanceScreen(),
+          bookedAmbulanceScreen.idScreen: (context) => bookedAmbulanceScreen(),
+          optionMobileICU.idScreen: (context) => optionMobileICU(),
+          homescreenicu.idScreen: (context) => homescreenicu(),
+          optionsIntercity.idScreen: (context) => optionsIntercity(),
         },
         debugShowCheckedModeBanner: false,
       ),
