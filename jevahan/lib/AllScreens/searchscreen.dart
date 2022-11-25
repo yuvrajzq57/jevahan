@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jevahan/AllScreens/homeScreenPage.dart';
-import 'package:jevahan/Models/address.dart';
-import 'package:jevahan/Models/placePrediction.dart';
 import 'package:jevahan/assistants/location_service.dart';
-import 'package:jevahan/assistants/requestassistant.dart';
-import 'package:jevahan/datahandler/appdata.dart';
 import 'package:jevahan/utilities/configMaps.dart';
 import 'package:jevahan/utilities/progressDialog.dart';
 import 'package:provider/provider.dart';

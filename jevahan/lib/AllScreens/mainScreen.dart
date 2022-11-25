@@ -1,7 +1,10 @@
 import 'dart:async';
+import 'dart:typed_data';
+import 'dart:ui' as ui;
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -32,9 +35,37 @@ class _MainScreenState extends State<MainScreen> {
   CarouselController buttonCarouselController = CarouselController();
   Completer<GoogleMapController> _controllerGoogleMap = Completer();
   late GoogleMapController newGoogleMapController;
+
+  List<String> images = [
+    'images/iconmap.png',
+    'images/iconmap.png',
+    'images/iconmap.png',
+    'images/iconmap.png',
+    'images/iconmap.png',
+    'images/iconmap.png',
+    'images/iconmap.png',
+    'images/iconmap.png',
+  ];
+
+  final List<Marker> __markers = <Marker>[
+    Marker(
+      markerId: MarkerId('12'),
+      position: LatLng(13.0302251, 77.560721),
+    )
+  ];
+
+  final List<LatLng> __latlng = <LatLng>[
+    LatLng(13.0302251, 77.560721),
+    LatLng(13.029448, 77.660831),
+    LatLng(13.014199, 77.5560831),
+    LatLng(13.049448, 77.630831),
+    LatLng(13.009448, 77.630831),
+    LatLng(13.009448, 73.630831),
+  ];
+
   static final CameraPosition _kGooglePlex = CameraPosition(
     target: LatLng(13.029448, 77.560831),
-    zoom: 14.4746,
+    zoom: 11,
   );
 
   static final Marker _kGooglePlexMarker1 = Marker(
@@ -56,6 +87,43 @@ class _MainScreenState extends State<MainScreen> {
     zoom: 14.4746,
   );
 
+  Uint8List? markerImage;
+
+  Future<Uint8List> getBytesFromAssets(String path, int width) async {
+    ByteData data = await rootBundle.load(path);
+    ui.Codec codec = await ui.instantiateImageCodec(data.buffer.asUint8List(),
+        targetHeight: width);
+    ui.FrameInfo fi = await codec.getNextFrame();
+    return (await fi.image.toByteData(format: ui.ImageByteFormat.png))!
+        .buffer
+        .asUint8List();
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    loadData();
+  }
+
+  loadData() async {
+    for (int i = 0; i < images.length; i++) {
+      final Uint8List markerIcon = await getBytesFromAssets(images[i], 100);
+      __markers.add(Marker(
+          markerId: MarkerId(i.toString()),
+          position: __latlng[i],
+          icon: BitmapDescriptor.fromBytes(markerIcon),
+          infoWindow: InfoWindow(
+            title: 'Hospital :' + i.toString(),
+          )));
+
+      setState(() {
+        markerIcon;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -72,7 +140,7 @@ class _MainScreenState extends State<MainScreen> {
                   child: Column(
                     children: [
                       SizedBox(
-                        height: 34,
+                        height: 48,
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -82,7 +150,7 @@ class _MainScreenState extends State<MainScreen> {
                             Text(
                               "JeVahan",
                               style: GoogleFonts.poppins(
-                                textStyle: TextStyle(
+                                textStyle: const TextStyle(
                                     fontSize: 35.0,
                                     fontWeight: FontWeight.w700,
                                     color: Color(0xFF062833)),
@@ -96,11 +164,11 @@ class _MainScreenState extends State<MainScreen> {
                                   child: Container(
                                     height: 40,
                                     width: 40,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                         color: Color(0xFF27444D),
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(8))),
-                                    child: Icon(
+                                    child: const Icon(
                                       Icons.phone,
                                       color: Colors.white,
                                     ),
@@ -136,120 +204,203 @@ class _MainScreenState extends State<MainScreen> {
                         ),
                       ),
                       SizedBox(
-                        height: 15,
+                        height: 35,
                       ),
                       CarouselSlider(
-                        options: CarouselOptions(
-                          height: 130.0,
-                          aspectRatio: 16 / 9,
-                          viewportFraction: 1.1,
-                          initialPage: 0,
-                          enableInfiniteScroll: true,
-                          reverse: false,
-                          autoPlay: true,
-                          autoPlayInterval: Duration(seconds: 3),
-                          autoPlayAnimationDuration:
-                              Duration(milliseconds: 800),
-                          autoPlayCurve: Curves.fastOutSlowIn,
-                          enlargeCenterPage: true,
-                          scrollDirection: Axis.horizontal,
-                        ),
-                        items: [1, 2].map((i) {
-                          return Builder(
-                            builder: (BuildContext context) {
-                              return GestureDetector(
-                                child: Container(
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                        items: [
+                          GestureDetector(
+                            child: Container(
+                              // ignore: sort_child_properties_last
+                              child: Column(
+                                children: [
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
                                     children: [
-                                      SizedBox(
-                                        height: 7,
+                                      const SizedBox(
+                                        width: 20,
                                       ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          SizedBox(
-                                            width: 20,
-                                          ),
-                                          Text(
-                                            "24/7 Services",
-                                            style: GoogleFonts.poppins(
-                                                textStyle: TextStyle(
-                                                    fontSize: 28,
-                                                    fontWeight: FontWeight.w700,
-                                                    color: Colors.white)),
-                                          ),
-                                          SizedBox(
-                                            width: 35,
-                                          ),
-                                          Image.asset(
-                                            "images/services.png",
-                                            height: 50,
-                                            width: 50,
-                                          ),
-                                        ],
+                                      Text(
+                                        "24/7 Services",
+                                        style: GoogleFonts.poppins(
+                                            textStyle: const TextStyle(
+                                                fontSize: 28,
+                                                fontWeight: FontWeight.w700,
+                                                color: Colors.white)),
                                       ),
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            20, 7, 0, 24),
-                                        child: Row(
+                                      const SizedBox(
+                                        width: 45,
+                                      ),
+                                    ],
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                                    child: Row(
+                                      children: [
+                                        SizedBox(
+                                          height: 35,
+                                        ),
+                                        Text(
+                                          "Learn More",
+                                          style: GoogleFonts.poppins(
+                                              textStyle: const TextStyle(
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Color(0xFF0D3C4B))),
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          // ignore: prefer_const_literals_to_create_immutables
                                           children: [
-                                            Text(
-                                              "Learn More",
-                                              style: GoogleFonts.poppins(
-                                                  textStyle: TextStyle(
-                                                      fontSize: 15,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      color:
-                                                          Color(0xFF0D3C4B))),
-                                            ),
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceEvenly,
-                                              children: [
-                                                Icon(Icons.arrow_circle_right),
-                                                SizedBox(
-                                                  width: 100,
-                                                ),
-                                              ],
+                                            const Icon(
+                                                Icons.arrow_circle_right),
+                                            const SizedBox(
+                                              width: 100,
                                             ),
                                           ],
                                         ),
+                                      ],
+                                    ),
+                                  ),
+                                  Row(
+                                    children: [
+                                      SizedBox(
+                                        width: 220,
+                                      ),
+                                      Image.asset(
+                                        "images/services.png",
+                                        height: 40,
+                                        width: 40,
                                       ),
                                     ],
                                   ),
-                                  height: 118,
-                                  width: 350,
-                                  decoration: BoxDecoration(
-                                    color: Color(0xFFA7C5CE),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          blurRadius: 14.0,
-                                          color: Color.fromARGB(
-                                              255, 198, 194, 194),
-                                          offset: Offset(
-                                            0,
-                                            0,
-                                          )),
-                                    ],
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(20),
-                                    ),
-                                  ),
+                                ],
+                              ),
+                              height: 128,
+                              width: 315,
+                              decoration: const BoxDecoration(
+                                color: Color(0xFFA7C5CE),
+                                boxShadow: [
+                                  BoxShadow(
+                                      blurRadius: 14.0,
+                                      color: Color.fromARGB(255, 198, 194, 194),
+                                      offset: Offset(
+                                        0,
+                                        0,
+                                      )),
+                                ],
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(20),
                                 ),
-                                onTap: () {
-                                  Navigator.pushNamedAndRemoveUntil(
-                                      context,
-                                      servicesScreen.idScreen,
-                                      (route) => false);
-                                },
-                              );
+                              ),
+                            ),
+                            onTap: () {
+                              Navigator.pushNamedAndRemoveUntil(context,
+                                  servicesScreen.idScreen, (route) => false);
                             },
-                          );
-                        }).toList(),
+                          ),
+                          Container(
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  height: 25,
+                                ),
+                                Row(
+                                  children: [
+                                    SizedBox(
+                                      width: 25,
+                                    ),
+                                    Text(
+                                      "Get our services \nanytime\nanywhere",
+                                      style: GoogleFonts.poppins(
+                                        textStyle: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.white,
+                                          fontSize: 22,
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Image(
+                                      image: AssetImage("images/services.png"),
+                                      height: 55,
+                                      width: 55,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            height: 130,
+                            width: 325,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: Color(0xFFB1AD37)),
+                          ),
+                          Container(
+                            // ignore: sort_child_properties_last
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  height: 18,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    const SizedBox(
+                                      width: 20,
+                                    ),
+                                    Text(
+                                      "Track your\nservices \nwithout worries",
+                                      style: GoogleFonts.poppins(
+                                          textStyle: const TextStyle(
+                                              fontSize: 24,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.white)),
+                                    ),
+                                    Image.asset(
+                                      "images/services.png",
+                                      height: 60,
+                                      width: 60,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            height: 128,
+                            width: 315,
+                            decoration: const BoxDecoration(
+                              color: Color(0xFF509A4A),
+                              boxShadow: [
+                                BoxShadow(
+                                    blurRadius: 14.0,
+                                    color: Color.fromARGB(255, 198, 194, 194),
+                                    offset: Offset(
+                                      0,
+                                      0,
+                                    )),
+                              ],
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(20),
+                              ),
+                            ),
+                          ),
+                        ],
+                        options: CarouselOptions(
+                          height: 154.0,
+                          enlargeCenterPage: true,
+                          autoPlay: true,
+                          aspectRatio: 16 / 9,
+                          autoPlayCurve: Curves.fastOutSlowIn,
+                          enableInfiniteScroll: true,
+                          autoPlayAnimationDuration:
+                              const Duration(milliseconds: 800),
+                          viewportFraction: 0.8,
+                        ),
                       ),
                       // Padding(
                       // padding: const EdgeInsets.all(13.0),
@@ -332,7 +483,7 @@ class _MainScreenState extends State<MainScreen> {
                       // ),
                       // ),
                       SizedBox(
-                        height: 20,
+                        height: 30,
                       ),
                       GestureDetector(
                         child: Container(
@@ -548,7 +699,7 @@ class _MainScreenState extends State<MainScreen> {
                       ),
                       Container(
                         height: 220,
-                        width: 350,
+                        width: 330,
                         decoration: BoxDecoration(boxShadow: [
                           BoxShadow(
                               blurRadius: 14.0,
@@ -565,7 +716,7 @@ class _MainScreenState extends State<MainScreen> {
                             mapType: MapType.normal,
                             zoomGesturesEnabled: true,
                             zoomControlsEnabled: true,
-                            markers: {_kGooglePlexMarker1, _kGooglePlexMarker2},
+                            markers: Set<Marker>.of(__markers),
                             initialCameraPosition: _kGooglePlex,
                             compassEnabled: true,
                             myLocationButtonEnabled: true,

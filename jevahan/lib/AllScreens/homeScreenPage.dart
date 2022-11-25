@@ -11,7 +11,6 @@ import 'package:jevahan/AllScreens/sideScreen.dart';
 import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
 import 'package:google_maps_flutter_platform_interface/google_maps_flutter_platform_interface.dart';
 import 'package:google_maps_flutter_platform_interface/src/types/camera.dart';
-import 'package:jevahan/assistants/assistantmethods.dart';
 import 'package:jevahan/assistants/location_service.dart';
 
 class homeScreenPage extends StatefulWidget {

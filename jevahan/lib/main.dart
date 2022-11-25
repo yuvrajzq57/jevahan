@@ -16,7 +16,6 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:jevahan/AllScreens/searchAmbulanceScreen;.dart';
 import 'package:jevahan/AllScreens/searchscreen.dart';
 import 'package:jevahan/AllScreens/servicesScreen.dart';
-import 'package:jevahan/datahandler/appdata.dart';
 import 'package:jevahan/utilities/forgotPasswoordPage.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -34,38 +33,36 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => AppData(),
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-            fontFamily: 'Brand Bold',
-            primarySwatch: Colors.orange,
-            visualDensity: VisualDensity.adaptivePlatformDensity),
-        // home: homeScreenPage(),
-        initialRoute: FirebaseAuth.instance.currentUser == null
-            ? Splash.idScreen
-            : MainScreen.idScreen,
-        routes: {
-          Splash.idScreen: (context) => Splash(),
-          RegistrationScreen.idScreen: (context) => RegistrationScreen(),
-          LoginScreen.idScreen: (context) => LoginScreen(),
-          ForgotPasswordPage.idScreen: (context) => ForgotPasswordPage(),
-          GetStartedScreen.idScreen: (context) => GetStartedScreen(),
-          MainScreen.idScreen: (context) => MainScreen(),
-          medicalFilesScreen.idScreen: (context) => medicalFilesScreen(),
-          ContactScreen.idScreen: (context) => ContactScreen(),
-          servicesScreen.idScreen: (context) => servicesScreen(),
-          homeScreenPage.idScreen: (context) => homeScreenPage(),
-          SearchScreen.idScreen: (context) => SearchScreen(),
-          searchAmbulanceScreen.idScreen: (context) => searchAmbulanceScreen(),
-          bookedAmbulanceScreen.idScreen: (context) => bookedAmbulanceScreen(),
-          optionMobileICU.idScreen: (context) => optionMobileICU(),
-          homescreenicu.idScreen: (context) => homescreenicu(),
-          optionsIntercity.idScreen: (context) => optionsIntercity(),
-        },
-        debugShowCheckedModeBanner: false,
-      ),
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+          fontFamily: 'Brand Bold',
+          primarySwatch: Colors.orange,
+          visualDensity: VisualDensity.adaptivePlatformDensity),
+      darkTheme: ThemeData.light(),
+      // home: homeScreenPage(),
+      initialRoute: FirebaseAuth.instance.currentUser == null
+          ? Splash.idScreen
+          : MainScreen.idScreen,
+      routes: {
+        Splash.idScreen: (context) => Splash(),
+        RegistrationScreen.idScreen: (context) => RegistrationScreen(),
+        LoginScreen.idScreen: (context) => LoginScreen(),
+        ForgotPasswordPage.idScreen: (context) => ForgotPasswordPage(),
+        GetStartedScreen.idScreen: (context) => GetStartedScreen(),
+        MainScreen.idScreen: (context) => MainScreen(),
+        medicalFilesScreen.idScreen: (context) => medicalFilesScreen(),
+        ContactScreen.idScreen: (context) => ContactScreen(),
+        servicesScreen.idScreen: (context) => servicesScreen(),
+        homeScreenPage.idScreen: (context) => homeScreenPage(),
+        SearchScreen.idScreen: (context) => SearchScreen(),
+        searchAmbulanceScreen.idScreen: (context) => searchAmbulanceScreen(),
+        bookedAmbulanceScreen.idScreen: (context) => bookedAmbulanceScreen(),
+        optionMobileICU.idScreen: (context) => optionMobileICU(),
+        homescreenicu.idScreen: (context) => homescreenicu(),
+        optionsIntercity.idScreen: (context) => optionsIntercity(),
+      },
+      debugShowCheckedModeBanner: false,
     );
   }
 }

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jevahan/AllScreens/mainScreen.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class ContactScreen extends StatelessWidget {
   static const String idScreen = "contact";
-
-  const ContactScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -64,9 +66,16 @@ class ContactScreen extends StatelessWidget {
                     SizedBox(
                       width: 12,
                     ),
-                    Text(
-                      "XXXX XXXX XXX",
-                      style: TextStyle(fontSize: 20),
+                    GestureDetector(
+                      child: Container(
+                        child: Text(
+                          "0797 9041 664",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ),
+                      onTap: () async {
+                        FlutterPhoneDirectCaller.callNumber("7979041664");
+                      },
                     )
                   ],
                 ),
@@ -83,7 +92,7 @@ class ContactScreen extends StatelessWidget {
                       width: 12,
                     ),
                     Text(
-                      "XXXX XXXX XXX",
+                      "1800 5277 777",
                       style: TextStyle(fontSize: 20),
                     )
                   ],
@@ -101,7 +110,7 @@ class ContactScreen extends StatelessWidget {
                       width: 12,
                     ),
                     Text(
-                      "abc@gmail.com",
+                      "jevahanwins@gmail.com",
                       style: TextStyle(
                           fontSize: 20,
                           color: Color(0xFF062833),
@@ -116,4 +125,9 @@ class ContactScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+_callNumber() async {
+  const number = '08592119XXXX'; //set the number here
+  bool? res = await FlutterPhoneDirectCaller.callNumber(number);
 }
