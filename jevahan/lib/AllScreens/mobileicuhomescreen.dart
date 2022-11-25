@@ -105,7 +105,7 @@ class _homescreenicuState extends State<homescreenicu> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const SearchScreen(),
+                            builder: (context) => SearchScreen(),
                           ),
                         ),
                       },

@@ -10,8 +10,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 class RegistrationScreen extends StatefulWidget {
   static const String idScreen = "register";
-
-  const RegistrationScreen({super.key});
+  late String _name;
 
   @override
   State<RegistrationScreen> createState() => _RegistrationScreenState();
@@ -26,13 +25,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
   TextEditingController passwordTextEditingController = TextEditingController();
   bool _obsecureText = true;
-  late String value;
-
-  @override
-  void dispose() {
-    nameTextEditingController.dispose();
-    super.dispose();
-  }
+  String _name = '';
 
   @override
   Widget build(BuildContext context) {
@@ -81,10 +74,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       height: 1.0,
                     ),
                     TextField(
+                      onChanged: (value) => setState(
+                        () => _name = value,
+                      ),
                       controller: nameTextEditingController,
-                      onChanged: (text) {
-                        value = text;
-                      },
                       keyboardType: TextInputType.text,
                       decoration: InputDecoration(
                         filled: true,
@@ -234,6 +227,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         } else {
                           registerNewUser(context);
                         }
+                        print(_name);
                       },
                     )
                   ],

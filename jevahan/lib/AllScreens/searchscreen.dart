@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:jevahan/AllScreens/homeScreenPage.dart';
 import 'package:jevahan/Models/address.dart';
 import 'package:jevahan/Models/placePrediction.dart';
+import 'package:jevahan/assistants/location_service.dart';
 import 'package:jevahan/assistants/requestassistant.dart';
 import 'package:jevahan/datahandler/appdata.dart';
 import 'package:jevahan/utilities/configMaps.dart';
@@ -10,7 +11,7 @@ import 'package:jevahan/utilities/progressDialog.dart';
 import 'package:provider/provider.dart';
 
 class SearchScreen extends StatefulWidget {
-  const SearchScreen({super.key});
+  static const String idScreen = "searchscreen";
 
   @override
   State<SearchScreen> createState() => _SearchScreenState();
@@ -19,14 +20,9 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   TextEditingController pickUpTextEditingController = TextEditingController();
   TextEditingController dropOffTextEditingController = TextEditingController();
-  List<PlacePrediction> placePredictionlist = [];
-
+  final String key = "AIzaSyA3QShZcuKPRUuNI4uYH_iceRisE1ENLPM";
   @override
   Widget build(BuildContext context) {
-    String placeAddress =
-        Provider.of<AppData>(context).PickupLocation?.placeName ?? "";
-    pickUpTextEditingController.text = placeAddress;
-
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -91,17 +87,30 @@ class _SearchScreenState extends State<SearchScreen> {
                             ),
                             child: Padding(
                               padding: EdgeInsets.all(3.0),
-                              child: TextField(
-                                controller: pickUpTextEditingController,
-                                decoration: InputDecoration(
-                                  hintText: "Pickup Location",
-                                  fillColor: Colors.grey[300],
-                                  filled: true,
-                                  border: InputBorder.none,
-                                  isDense: true,
-                                  contentPadding: EdgeInsets.only(
-                                      left: 11.0, top: 8.0, bottom: 8.0),
-                                ),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: TextFormField(
+                                      controller: pickUpTextEditingController,
+                                      decoration: InputDecoration(
+                                        hintText: "Pickup Location",
+                                        fillColor: Colors.grey[300],
+                                        filled: true,
+                                        border: InputBorder.none,
+                                        isDense: true,
+                                        contentPadding: EdgeInsets.only(
+                                            left: 11.0, top: 8.0, bottom: 8.0),
+                                      ),
+                                    ),
+                                  ),
+                                  IconButton(
+                                    onPressed: () {
+                                      LocationService().getPlace(
+                                          pickUpTextEditingController.text);
+                                    },
+                                    icon: Icon(Icons.search),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
@@ -130,19 +139,18 @@ class _SearchScreenState extends State<SearchScreen> {
                             ),
                             child: Padding(
                               padding: EdgeInsets.all(3.0),
-                              child: TextField(
-                                onChanged: (val) {
-                                  findPlace(val);
-                                },
-                                controller: dropOffTextEditingController,
-                                decoration: InputDecoration(
-                                  hintText: "Dropoff Location",
-                                  fillColor: Colors.grey[300],
-                                  filled: true,
-                                  border: InputBorder.none,
-                                  isDense: true,
-                                  contentPadding: EdgeInsets.only(
-                                      left: 11.0, top: 8.0, bottom: 8.0),
+                              child: Expanded(
+                                child: TextField(
+                                  controller: dropOffTextEditingController,
+                                  decoration: InputDecoration(
+                                    hintText: "Dropoff Location",
+                                    fillColor: Colors.grey[300],
+                                    filled: true,
+                                    border: InputBorder.none,
+                                    isDense: true,
+                                    contentPadding: EdgeInsets.only(
+                                        left: 11.0, top: 8.0, bottom: 8.0),
+                                  ),
                                 ),
                               ),
                             ),
@@ -160,143 +168,8 @@ class _SearchScreenState extends State<SearchScreen> {
           SizedBox(
             height: 10.0,
           ),
-          (placePredictionlist.length > 0)
-              ? Padding(
-                  padding:
-                      EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-                  child: ListView.separated(
-                    itemBuilder: (context, index) {
-                      return PredictionTile(
-                        placePredictions: placePredictionlist[index],
-                      );
-                    },
-                    separatorBuilder: (BuildContext context, int index) =>
-                        Divider(),
-                    itemCount: placePredictionlist.length,
-                    shrinkWrap: true,
-                    physics: ClampingScrollPhysics(),
-                  ))
-              : Container(),
         ],
       ),
     );
-  }
-
-  void findPlace(String placeName) async {
-    if (placeName.length > 1) {
-      String autoCompleteUrl =
-          "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=$placeName&types=geocode&key=$mapKey&components=country:in";
-      //https://maps.googleapis.com/maps/api/place/autocomplete/json?input=$placeName&key=$mapKey&sessiontoken=1234567890&components=country:in
-      var res = await requestassistant.getRequest(autoCompleteUrl);
-
-      if (res == "failed") {
-        return;
-      }
-
-      if (res["status"] == "OK") {
-        var prediction = res["predictions"];
-
-        var placesList = (prediction as List)
-            .map((e) => PlacePrediction.fromJson(e))
-            .toList();
-
-        setState(() {
-          placePredictionlist = placesList;
-        });
-      }
-    }
-  }
-}
-
-class PredictionTile extends StatelessWidget {
-  final PlacePrediction placePredictions;
-  PredictionTile({Key? key, required this.placePredictions}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return FloatingActionButton(
-      onPressed: () {
-        getplaceAddressDetails(placePredictions.place_id, context);
-      },
-      child: Container(
-        child: Column(
-          children: [
-            SizedBox(
-              width: 10.0,
-            ),
-            Row(
-              children: [
-                Icon(Icons.add_location),
-                SizedBox(
-                  width: 14.0,
-                ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 8,
-                      ),
-                      Text(
-                        placePredictions.main_text,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(fontSize: 16.0),
-                      ),
-                      SizedBox(
-                        height: 3.0,
-                      ),
-                      Text(
-                        placePredictions.secondary_text,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(fontSize: 12.0, color: Colors.grey),
-                      ),
-                      SizedBox(
-                        height: 10.0,
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-            SizedBox(
-              width: 10.0,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  void getplaceAddressDetails(String placeId, context) async {
-    showDialog(
-        context: context,
-        builder: (BuildContext context) =>
-            ProgressDialog(message: "Setting DropOff, Please wait...."));
-
-    String placeDetailsUrl =
-        "https://maps.googleapis.com/maps/api/place/details/json?place_id=$placeId&key=$mapKey";
-
-    var res = await requestassistant.getRequest(placeDetailsUrl);
-
-    Navigator.pop(context);
-
-    if (res == "failed") {
-      return;
-    }
-
-    if (res["status"] == "OK") {
-      Address address = Address(
-          res["result"]["name"],
-          placeId,
-          res["result"]["geometry"]["location"]["lat"],
-          res["result"]["geometry"]["location"]["lng"]);
-      address.placeName = res["result"]["name"];
-      address.placeID = placeId;
-      address.latitude = res["result"]["geometry"]["location"]["lat"];
-      address.longitude = res["result"]["geometry"]["location"]["lng"];
-
-      Provider.of<AppData>(context, listen: false)
-          .updateDropOffLocationAddress(address);
-    }
   }
 }

@@ -14,6 +14,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:jevahan/AllScreens/searchAmbulanceScreen;.dart';
+import 'package:jevahan/AllScreens/searchscreen.dart';
 import 'package:jevahan/AllScreens/servicesScreen.dart';
 import 'package:jevahan/datahandler/appdata.dart';
 import 'package:jevahan/utilities/forgotPasswoordPage.dart';
@@ -56,6 +57,7 @@ class MyApp extends StatelessWidget {
           ContactScreen.idScreen: (context) => ContactScreen(),
           servicesScreen.idScreen: (context) => servicesScreen(),
           homeScreenPage.idScreen: (context) => homeScreenPage(),
+          SearchScreen.idScreen: (context) => SearchScreen(),
           searchAmbulanceScreen.idScreen: (context) => searchAmbulanceScreen(),
           bookedAmbulanceScreen.idScreen: (context) => bookedAmbulanceScreen(),
           optionMobileICU.idScreen: (context) => optionMobileICU(),
