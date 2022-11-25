@@ -172,10 +172,8 @@ class _homeScreenPageState extends State<homeScreenPage> {
                     SizedBox(),
                     GestureDetector(
                       onTap: () => {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => searchAmbulanceScreen()))
+                        Navigator.pushNamedAndRemoveUntil(context,
+                            searchAmbulanceScreen.idScreen, (route) => false)
                       },
                       child: Container(
                         height: 66,

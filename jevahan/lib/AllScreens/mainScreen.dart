@@ -140,7 +140,7 @@ class _MainScreenState extends State<MainScreen> {
                       ),
                       CarouselSlider(
                         options: CarouselOptions(
-                          height: 150.0,
+                          height: 130.0,
                           aspectRatio: 16 / 9,
                           viewportFraction: 1.1,
                           initialPage: 0,
@@ -154,7 +154,7 @@ class _MainScreenState extends State<MainScreen> {
                           enlargeCenterPage: true,
                           scrollDirection: Axis.horizontal,
                         ),
-                        items: [1, 2, 3].map((i) {
+                        items: [1, 2].map((i) {
                           return Builder(
                             builder: (BuildContext context) {
                               return GestureDetector(
@@ -182,7 +182,7 @@ class _MainScreenState extends State<MainScreen> {
                                                     color: Colors.white)),
                                           ),
                                           SizedBox(
-                                            width: 15,
+                                            width: 35,
                                           ),
                                           Image.asset(
                                             "images/services.png",
@@ -221,8 +221,8 @@ class _MainScreenState extends State<MainScreen> {
                                       ),
                                     ],
                                   ),
-                                  height: 128,
-                                  width: 315,
+                                  height: 118,
+                                  width: 350,
                                   decoration: BoxDecoration(
                                     color: Color(0xFFA7C5CE),
                                     boxShadow: [
@@ -401,7 +401,7 @@ class _MainScreenState extends State<MainScreen> {
                             ],
                           ),
                           height: 154,
-                          width: 315,
+                          width: 350,
                           decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
@@ -427,7 +427,7 @@ class _MainScreenState extends State<MainScreen> {
                         height: 10,
                       ),
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(27, 15, 27, 8),
+                        padding: const EdgeInsets.fromLTRB(13, 15, 15, 8),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -452,7 +452,7 @@ class _MainScreenState extends State<MainScreen> {
                                       ),
                                     ),
                                     SizedBox(
-                                      height: 6,
+                                      height: 9,
                                     ),
                                     Image.asset(
                                       "images/mobile.png",
@@ -461,8 +461,8 @@ class _MainScreenState extends State<MainScreen> {
                                     )
                                   ],
                                 ),
-                                height: 134,
-                                width: 142,
+                                height: 140,
+                                width: 150,
                                 decoration: BoxDecoration(
                                     boxShadow: [
                                       BoxShadow(
@@ -482,6 +482,9 @@ class _MainScreenState extends State<MainScreen> {
                                 Navigator.pushNamedAndRemoveUntil(context,
                                     optionMobileICU.idScreen, (route) => false);
                               },
+                            ),
+                            SizedBox(
+                              width: 10,
                             ),
                             GestureDetector(
                               child: Container(
@@ -504,7 +507,7 @@ class _MainScreenState extends State<MainScreen> {
                                       ),
                                     ),
                                     SizedBox(
-                                      height: 6,
+                                      height: 9,
                                     ),
                                     Image.asset(
                                       "images/intercity.png",
@@ -513,8 +516,8 @@ class _MainScreenState extends State<MainScreen> {
                                     )
                                   ],
                                 ),
-                                height: 134,
-                                width: 142,
+                                height: 140,
+                                width: 150,
                                 decoration: BoxDecoration(
                                     boxShadow: [
                                       BoxShadow(
@@ -545,7 +548,7 @@ class _MainScreenState extends State<MainScreen> {
                       ),
                       Container(
                         height: 220,
-                        width: 310,
+                        width: 350,
                         decoration: BoxDecoration(boxShadow: [
                           BoxShadow(
                               blurRadius: 14.0,
@@ -581,7 +584,7 @@ class _MainScreenState extends State<MainScreen> {
                         child: GestureDetector(
                           child: Container(
                             height: 120,
-                            width: 315,
+                            width: 350,
                             decoration: BoxDecoration(
                                 boxShadow: [
                                   BoxShadow(

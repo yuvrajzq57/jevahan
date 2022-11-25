@@ -5,7 +5,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:jevahan/AllScreens/bookedAmbulanceScreen.dart';
+
 import 'package:jevahan/AllScreens/mainScreen.dart';
 
 class searchAmbulanceScreen extends StatefulWidget {
@@ -26,17 +26,17 @@ class _searchAmbulanceScreenState extends State<searchAmbulanceScreen> {
 
   double bottomPaddingOfMap = 0;
 
-  @override
-  void initState() {
-    super.initState();
-    _navigatetohome();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   _navigatetohome();
+  // }
 
-  _navigatetohome() async {
-    await Future.delayed(Duration(milliseconds: 2000), () {});
-    Navigator.pushReplacement(context,
-        MaterialPageRoute(builder: (context) => bookedAmbulanceScreen()));
-  }
+  // _navigatetohome() async {
+  //   await Future.delayed(Duration(milliseconds: 2000), () {});
+  //   Navigator.pushReplacement(context,
+  //       MaterialPageRoute(builder: (context) => bookedAmbulanceScreen()));
+  // }
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -93,10 +93,6 @@ class _searchAmbulanceScreenState extends State<searchAmbulanceScreen> {
                         SizedBox(
                           width: 75,
                         ),
-                        Icon(
-                          Icons.blur_circular_outlined,
-                          size: 40,
-                        )
                       ],
                     ),
                   ),
@@ -107,6 +103,5 @@ class _searchAmbulanceScreenState extends State<searchAmbulanceScreen> {
         ],
       ),
     );
-    ;
   }
 }
