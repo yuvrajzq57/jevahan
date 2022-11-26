@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:jevahan/AllScreens/bookedAmbulanceScreen.dart';
+import 'package:jevahan/AllScreens/bookedAmbulanceScreenICU.dart';
 import 'package:jevahan/AllScreens/homeScreenPage.dart';
 
 import 'package:jevahan/AllScreens/mainScreen.dart';
@@ -68,7 +69,7 @@ class _searchAmbulanceScreenState extends State<searchAmbulanceScreen> {
   }
 
   _navigatetohome() async {
-    await Future.delayed(Duration(milliseconds: 4000), () {});
+    await Future.delayed(Duration(milliseconds: 5000), () {});
     Navigator.pushReplacement(context,
         MaterialPageRoute(builder: (context) => bookedAmbulanceScreen()));
   }
@@ -132,98 +133,100 @@ class _searchAmbulanceScreenState extends State<searchAmbulanceScreen> {
         foregroundColor: Colors.white,
       ),
       // on  clicking  book your nearest ambulance it redirects to this page
-      body: Container(
-        child: Column(
-          children: [
-            Stack(
-              children: [
-                Container(
-                  height: 750,
-                  child: GoogleMap(
-                    padding: EdgeInsets.only(bottom: 2),
-                    mapType: MapType.normal,
-                    zoomGesturesEnabled: true,
-                    markers: Set<Marker>.of(__markers),
-                    zoomControlsEnabled: true,
-                    initialCameraPosition: _kGooglePlex,
-                    compassEnabled: true,
-                    myLocationButtonEnabled: true,
-                    onMapCreated: (GoogleMapController controller) {
-                      _controllerGoogleMap.complete(controller);
-                      newGoogleMapController = controller;
-                      setState(() {
-                        // bottomPaddingOfMap = 0.0;
-                      });
-                      // locatePosition();
-                    },
+      body: SingleChildScrollView(
+        child: Container(
+          child: Column(
+            children: [
+              Stack(
+                children: [
+                  Container(
+                    height: 750,
+                    child: GoogleMap(
+                      padding: EdgeInsets.only(bottom: 2),
+                      mapType: MapType.normal,
+                      zoomGesturesEnabled: true,
+                      markers: Set<Marker>.of(__markers),
+                      zoomControlsEnabled: true,
+                      initialCameraPosition: _kGooglePlex,
+                      compassEnabled: true,
+                      myLocationButtonEnabled: true,
+                      onMapCreated: (GoogleMapController controller) {
+                        _controllerGoogleMap.complete(controller);
+                        newGoogleMapController = controller;
+                        setState(() {
+                          // bottomPaddingOfMap = 0.0;
+                        });
+                        // locatePosition();
+                      },
+                    ),
                   ),
-                ),
-                Container(
-                  //Change to Google maps
-                  height: 120,
-                  width: 400,
-                  color: Colors.white,
-                  child: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Row(
-                        children: [
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            "Searching for the \nnearest ambulance ",
-                            style: GoogleFonts.poppins(
-                              textStyle: TextStyle(
-                                  fontSize: 23,
-                                  fontWeight: FontWeight.w500,
-                                  color: Color(0xFF062833)),
+                  Container(
+                    //Change to Google maps
+                    height: 120,
+                    width: 400,
+                    color: Colors.white,
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              width: 10,
                             ),
-                          ),
-                          SizedBox(
-                            width: 40,
-                          ),
-                          Icon(
-                            Icons.location_searching_rounded,
-                            size: 40,
-                          )
-                        ],
+                            Text(
+                              "Searching for the \nnearest ambulance ",
+                              style: GoogleFonts.poppins(
+                                textStyle: TextStyle(
+                                    fontSize: 23,
+                                    fontWeight: FontWeight.w500,
+                                    color: Color(0xFF062833)),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 40,
+                            ),
+                            Icon(
+                              Icons.location_searching_rounded,
+                              size: 40,
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                ),
 
-                //Google maps
-                Column(
-                  children: [
-                    SizedBox(
-                      height: 400,
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 280,
-                        ),
-                        ElevatedButton(
-                            onPressed: () {},
-                            child: Text(calculateDistance(
-                                        start.latitude,
-                                        start.longitude,
-                                        finish.latitude,
-                                        finish.longitude)
-                                    .toString()
-                                    .trim() +
-                                '  mins')),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 300,
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ],
+                  //Google maps
+                  Column(
+                    children: [
+                      SizedBox(
+                        height: 400,
+                      ),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 280,
+                          ),
+                          ElevatedButton(
+                              onPressed: () {},
+                              child: Text(calculateDistance(
+                                          start.latitude,
+                                          start.longitude,
+                                          finish.latitude,
+                                          finish.longitude)
+                                      .toString()
+                                      .trim() +
+                                  '  mins')),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 300,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

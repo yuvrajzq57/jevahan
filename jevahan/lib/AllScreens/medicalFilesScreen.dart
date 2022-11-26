@@ -5,6 +5,8 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jevahan/AllScreens/mainScreen.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:jevahan/AllScreens/registrationScreen.dart';
 
 class medicalFilesScreen extends StatefulWidget {
   static const String idScreen = "medicalfiles";
@@ -16,35 +18,17 @@ class medicalFilesScreen extends StatefulWidget {
 }
 
 class _medicalFilesScreenState extends State<medicalFilesScreen> {
-  // PlatformFile? pickedFile;
-  // UploadTask? uploadTask;
+  File? sampleImage;
 
-  // Future uploadFile() async {
-  //   final path = 'files/${pickedFile!.name}';
-  //   final file = File(pickedFile!.path!);
+  Future getImage() async {
+    var tempImage = await ImagePicker().pickImage(
+      source: ImageSource.camera,
+    );
 
-  //   final ref = FirebaseStorage.instance.ref().child(path);
-  //   setState(() {
-  //     uploadTask = ref.putFile(file);
-  //   });
-
-  //   final snapshot = await uploadTask!.whenComplete(() {});
-
-  //   final urlDownload = await snapshot.ref.getDownloadURL();
-  //   print('Donwload Link: $urlDownload');
-  //   setState(() {
-  //     uploadTask = null;
-  //   });
-  // }
-
-  // Future selectFile() async {
-  //   final result = await FilePicker.platform.pickFiles();
-  //   if (result == null) return;
-
-  //   setState(() {
-  //     pickedFile = result.files.first;
-  //   });
-  // }
+    setState(() {
+      sampleImage = tempImage as File;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,6 +55,9 @@ class _medicalFilesScreenState extends State<medicalFilesScreen> {
           padding: const EdgeInsets.fromLTRB(10, 20, 10, 10),
           child: Column(
             children: [
+              Center(
+                child: (sampleImage == null) ? Text('') : enableUpload(),
+              ),
               const SizedBox(
                 height: 10,
               ),
@@ -119,7 +106,7 @@ class _medicalFilesScreenState extends State<medicalFilesScreen> {
                   ),
                 ),
                 onTap: () {
-                  // selectFile;
+                  getImage();
                 },
               ),
               SizedBox(
@@ -145,16 +132,6 @@ class _medicalFilesScreenState extends State<medicalFilesScreen> {
                   ],
                 ),
               ),
-              // if (pickedFile != null)
-              //   Expanded(
-              //     child: Container(
-              //       color: Colors.grey[200],
-              //       child: Center(
-              //         child: Text(pickedFile!.name),
-              //       ),
-              //     ),
-              //   ),
-              // buildProgress(),
             ],
           ),
         ),
@@ -162,39 +139,26 @@ class _medicalFilesScreenState extends State<medicalFilesScreen> {
     );
   }
 
-  // Widget buildProgress() => StreamBuilder<TaskSnapshot>(
-  //       stream: uploadTask?.snapshotEvents,
-  //       builder: (context, snapshot) {
-  //         if (snapshot.hasData) {
-  //           final data = snapshot.data!;
-  //           double progress = data.bytesTransferred / data.totalBytes;
+  Widget enableUpload() {
+    return Container(
+        child: Column(
+      children: <Widget>[
+        Image.file(
+          (sampleImage!),
+          height: 300.0,
+          width: 300.0,
+        ),
+        ElevatedButton(
+            onPressed: () async {
+              final Reference firebaseStorageRef =
+                  FirebaseStorage.instance.ref().child('myimage.jpg');
 
-  //           return SizedBox(
-  //             height: 50,
-  //             child: Stack(
-  //               fit: StackFit.expand,
-  //               children: [
-  //                 LinearProgressIndicator(
-  //                   value: progress,
-  //                   backgroundColor: Colors.grey,
-  //                   color: Color(0xFF062833),
-  //                 ),
-  //                 Center(
-  //                   child: Text(
-  //                     '${(100 * progress).roundToDouble()}%',
-  //                     style: const TextStyle(color: Colors.white),
-  //                   ),
-  //                 ),
-  //               ],
-  //             ),
-  //           );
-  //         } else {
-  //           return const SizedBox(
-  //             height: 50,
-  //           );
-  //         }
-  //       },
-  //     );
+              final UploadTask task = firebaseStorageRef.putFile(sampleImage!);
+            },
+            child: Text('Upload'))
+      ],
+    ));
+  }
 }
 
 

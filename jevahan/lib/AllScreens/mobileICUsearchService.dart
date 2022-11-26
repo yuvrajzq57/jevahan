@@ -4,6 +4,8 @@ import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:jevahan/AllScreens/bookedAmbulanceScreen.dart';
+import 'package:jevahan/AllScreens/bookedAmbulanceScreenICU.dart';
 import 'package:jevahan/AllScreens/emergencyDropDownList.dart';
 import 'package:jevahan/AllScreens/mainScreen.dart';
 import 'package:jevahan/AllScreens/searchAmbulanceScreen;.dart';
@@ -14,14 +16,14 @@ import 'package:google_maps_flutter_platform_interface/google_maps_flutter_platf
 import 'package:google_maps_flutter_platform_interface/src/types/camera.dart';
 import 'package:jevahan/assistants/location_service.dart';
 
-class homeScreenPage extends StatefulWidget {
-  static const String idScreen = "homescreen";
+class MobileIcuService extends StatefulWidget {
+  static const String idScreen = "mobileicuservice";
 
   @override
-  State<homeScreenPage> createState() => _homeScreenPageState();
+  State<MobileIcuService> createState() => _MobileIcuServiceState();
 }
 
-class _homeScreenPageState extends State<homeScreenPage> {
+class _MobileIcuServiceState extends State<MobileIcuService> {
   Position? _pickUpLocation;
   double? distanceInM = 0.0;
   TextEditingController pickUpTextEditingController = TextEditingController();
@@ -92,6 +94,18 @@ class _homeScreenPageState extends State<homeScreenPage> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    _navigatetohome();
+  }
+
+  _navigatetohome() async {
+    await Future.delayed(Duration(milliseconds: 20000), () {});
+    Navigator.pushReplacement(context,
+        MaterialPageRoute(builder: (context) => bookedAmbulanceScreenICU()));
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -147,7 +161,7 @@ class _homeScreenPageState extends State<homeScreenPage> {
             right: 0.0,
             bottom: 0.0,
             child: Container(
-              height: 300.0,
+              height: 200.0,
               decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -169,53 +183,7 @@ class _homeScreenPageState extends State<homeScreenPage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     SizedBox(
-                      height: 20.0,
-                    ),
-                    SizedBox(),
-                    GestureDetector(
-                      onTap: () => {
-                        Navigator.pushNamedAndRemoveUntil(
-                            context, EmergDropDown.idScreen, (route) => false)
-                      },
-                      child: Container(
-                        height: 66,
-                        width: 319,
-                        alignment: Alignment.center,
-                        child: Padding(
-                          padding: const EdgeInsets.all(21.0),
-                          child: Row(
-                            children: [
-                              Center(
-                                child: Text(
-                                  "Book your nearest Ambulance",
-                                  style: GoogleFonts.poppins(
-                                      textStyle: TextStyle(
-                                          fontSize: 17,
-                                          fontWeight: FontWeight.w500,
-                                          color: Color(0xFF062833))),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        decoration: BoxDecoration(
-                          color: Color(0xFFD8ECF2),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(18.0),
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    Text(
-                      "OR",
-                      style: GoogleFonts.poppins(
-                          textStyle: TextStyle(fontWeight: FontWeight.w700)),
-                    ),
-                    SizedBox(
-                      height: 8,
+                      height: 30,
                     ),
                     Container(
                       height: 66,

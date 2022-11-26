@@ -616,6 +616,33 @@ class _MainScreenState extends State<MainScreen> {
                         ),
                       ),
                       SizedBox(
+                        height: 23,
+                      ),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 25,
+                          ),
+                          Text(
+                            "Ambulance Hotspots",
+                            style: GoogleFonts.poppins(
+                              textStyle: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xFF062833),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 8,
+                          ),
+                          Icon(
+                            Icons.arrow_drop_down_circle,
+                            color: Color(0xFF062833),
+                          )
+                        ],
+                      ),
+                      SizedBox(
                         height: 17,
                       ),
                       Container(

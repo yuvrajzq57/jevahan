@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jevahan/AllScreens/mainScreen.dart';
 import 'package:jevahan/AllScreens/homeScreenPage.dart';
+import 'package:jevahan/AllScreens/mobileICUsearchService.dart';
 import 'package:jevahan/AllScreens/mobileicuhomescreen.dart';
 
 class optionsIntercity extends StatefulWidget {
@@ -219,7 +220,7 @@ class _optionsIntercityState extends State<optionsIntercity> {
                   ),
                   onTap: () {
                     Navigator.pushNamedAndRemoveUntil(
-                        context, homescreenicu.idScreen, (route) => false);
+                        context, MobileIcuService.idScreen, (route) => false);
                   },
                 ),
               ),

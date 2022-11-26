@@ -7,21 +7,23 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:jevahan/AllScreens/applicationForm..dart';
 import 'package:jevahan/AllScreens/mainScreen.dart';
+import 'package:jevahan/AllScreens/mobileICUsearchService.dart';
 import 'package:jevahan/AllScreens/searchAmbulanceScreen;.dart';
 
 import 'package:jevahan/assistants/location_service.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class bookedAmbulanceScreen extends StatefulWidget {
-  static const String idScreen = "bookedAmbulanceScreen";
+class bookedAmbulanceScreenICU extends StatefulWidget {
+  static const String idScreen = "bookedAmbulanceScreenICU";
 
-  const bookedAmbulanceScreen({super.key});
+  const bookedAmbulanceScreenICU({super.key});
 
   @override
-  State<bookedAmbulanceScreen> createState() => _bookedAmbulanceScreenState();
+  State<bookedAmbulanceScreenICU> createState() =>
+      _bookedAmbulanceScreenICUState();
 }
 
-class _bookedAmbulanceScreenState extends State<bookedAmbulanceScreen> {
+class _bookedAmbulanceScreenICUState extends State<bookedAmbulanceScreenICU> {
   Completer<GoogleMapController> _controllerGoogleMap = Completer();
   late GoogleMapController newGoogleMapController;
   Marker? _origin;
@@ -44,7 +46,7 @@ class _bookedAmbulanceScreenState extends State<bookedAmbulanceScreen> {
           child: Icon(Icons.arrow_back),
           onTap: () {
             Navigator.pushNamedAndRemoveUntil(
-                context, searchAmbulanceScreen.idScreen, (route) => false);
+                context, MobileIcuService.idScreen, (route) => false);
           },
         ),
         backgroundColor: Color(0xFF062833),

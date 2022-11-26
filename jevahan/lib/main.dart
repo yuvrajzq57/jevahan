@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:jevahan/AllScreens/applicationForm..dart';
 import 'package:jevahan/AllScreens/bookedAmbulanceScreen.dart';
+import 'package:jevahan/AllScreens/bookedAmbulanceScreenICU.dart';
 import 'package:jevahan/AllScreens/contactScreen.dart';
 import 'package:jevahan/AllScreens/emergencyDropDownList.dart';
 import 'package:jevahan/AllScreens/homeScreenPage.dart';
 import 'package:jevahan/AllScreens/loginScreen.dart';
 import 'package:jevahan/AllScreens/mainScreen.dart';
 import 'package:jevahan/AllScreens/medicalFilesScreen.dart';
+import 'package:jevahan/AllScreens/mobileICUsearchService.dart';
 import 'package:jevahan/AllScreens/mobileicuhomescreen.dart';
 import 'package:jevahan/AllScreens/optionsIntercity.dart';
 import 'package:jevahan/AllScreens/optionsMobileICU.dart';
@@ -65,6 +67,9 @@ class MyApp extends StatelessWidget {
         optionsIntercity.idScreen: (context) => optionsIntercity(),
         EmergDropDown.idScreen: (context) => EmergDropDown(),
         ApplicationForm.idScreen: (context) => ApplicationForm(),
+        MobileIcuService.idScreen: (context) => MobileIcuService(),
+        bookedAmbulanceScreenICU.idScreen: (context) =>
+            bookedAmbulanceScreenICU(),
       },
       debugShowCheckedModeBanner: false,
     );
