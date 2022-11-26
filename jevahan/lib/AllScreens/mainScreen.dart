@@ -327,7 +327,8 @@ class _MainScreenState extends State<MainScreen> {
                                       width: 5,
                                     ),
                                     Image(
-                                      image: AssetImage("images/services.png"),
+                                      image:
+                                          AssetImage("images/medical-team.png"),
                                       height: 55,
                                       width: 55,
                                     ),
@@ -363,7 +364,7 @@ class _MainScreenState extends State<MainScreen> {
                                               color: Colors.white)),
                                     ),
                                     Image.asset(
-                                      "images/services.png",
+                                      "images/medical-team.png",
                                       height: 60,
                                       width: 60,
                                     ),
@@ -402,86 +403,6 @@ class _MainScreenState extends State<MainScreen> {
                           viewportFraction: 0.8,
                         ),
                       ),
-                      // Padding(
-                      // padding: const EdgeInsets.all(13.0),
-                      // child: Container(
-                      // child: Column(
-                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      // children: [
-                      // SizedBox(
-                      // height: 15,
-                      // ),
-                      // Row(
-                      // mainAxisAlignment: MainAxisAlignment.start,
-                      // children: [
-                      // SizedBox(
-                      // width: 20,
-                      // ),
-                      // Text(
-                      // "24/7 Services",
-                      // style: GoogleFonts.poppins(
-                      // textStyle: TextStyle(
-                      // fontSize: 28,
-                      // fontWeight: FontWeight.w700,
-                      // color: Colors.white)),
-                      // ),
-                      // SizedBox(
-                      // width: 15,
-                      // ),
-                      // Image.asset(
-                      // "images/services.png",
-                      // height: 50,
-                      // width: 50,
-                      // ),
-                      // ],
-                      // ),
-                      // Padding(
-                      // padding:
-                      // const EdgeInsets.fromLTRB(20, 15, 0, 24),
-                      // child: Row(
-                      // children: [
-                      // Text(
-                      // "Learn More",
-                      // style: GoogleFonts.poppins(
-                      // textStyle: TextStyle(
-                      // fontSize: 15,
-                      // fontWeight: FontWeight.w500,
-                      // color: Color(0xFF0D3C4B))),
-                      // ),
-                      // Row(
-                      // mainAxisAlignment:
-                      // MainAxisAlignment.spaceEvenly,
-                      // children: [
-                      // Icon(Icons.arrow_circle_right),
-                      // SizedBox(
-                      // width: 100,
-                      // ),
-                      // ],
-                      // ),
-                      // ],
-                      // ),
-                      // ),
-                      // ],
-                      // ),
-                      // height: 128,
-                      // width: 315,
-                      // decoration: BoxDecoration(
-                      // color: Color(0xFFA7C5CE),
-                      // boxShadow: [
-                      // BoxShadow(
-                      // blurRadius: 14.0,
-                      // color: Color.fromARGB(255, 198, 194, 194),
-                      // offset: Offset(
-                      // 10,
-                      // 10,
-                      // )),
-                      // ],
-                      // borderRadius: BorderRadius.all(
-                      // Radius.circular(20),
-                      // ),
-                      // ),
-                      // ),
-                      // ),
                       SizedBox(
                         height: 30,
                       ),

@@ -1,6 +1,15 @@
-import 'package:flutter_polyline_points/flutter_polyline_points.dart';
-import 'package:http/http.dart' as http;
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert' as convert;
+import 'dart:html';
+import 'dart:math';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter_polyline_points/flutter_polyline_points.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:http/http.dart' as http;
 
 class LocationService {
   final String key = "AIzaSyA3QShZcuKPRUuNI4uYH_iceRisE1ENLPM";
@@ -52,9 +61,18 @@ class LocationService {
       'polyline': json['routes'][0]['overview_polyline']['points'],
       'polyline_decoded': PolylinePoints()
           .decodePolyline(json['routes'][0]['overview_polyline']['points']),
+      'duration_value': json['routes'][0]['legs']['duration']['value'],
     };
 
     print(results);
     return results;
   }
+}
+
+double calculateDistance(lat1, lon1, lat2, lon2) {
+  var p = 0.017453292519943295;
+  var a = 0.5 -
+      cos((lat2 - lat1) * p) / 2 +
+      cos(lat1 * p) * cos(lat2 * p) * (1 - cos((lon2 - lon1) * p)) / 2;
+  return 12742 * asin(sqrt(a));
 }

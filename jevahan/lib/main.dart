@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:jevahan/AllScreens/applicationForm..dart';
 import 'package:jevahan/AllScreens/bookedAmbulanceScreen.dart';
 import 'package:jevahan/AllScreens/contactScreen.dart';
+import 'package:jevahan/AllScreens/emergencyDropDownList.dart';
 import 'package:jevahan/AllScreens/homeScreenPage.dart';
 import 'package:jevahan/AllScreens/loginScreen.dart';
 import 'package:jevahan/AllScreens/mainScreen.dart';
@@ -61,6 +63,8 @@ class MyApp extends StatelessWidget {
         optionMobileICU.idScreen: (context) => optionMobileICU(),
         homescreenicu.idScreen: (context) => homescreenicu(),
         optionsIntercity.idScreen: (context) => optionsIntercity(),
+        EmergDropDown.idScreen: (context) => EmergDropDown(),
+        ApplicationForm.idScreen: (context) => ApplicationForm(),
       },
       debugShowCheckedModeBanner: false,
     );

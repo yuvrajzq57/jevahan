@@ -1,17 +1,18 @@
+import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jevahan/AllScreens/mainScreen.dart';
 import 'package:jevahan/AllScreens/homeScreenPage.dart';
-import 'package:jevahan/AllScreens/mobileicuhomescreen.dart';
+import 'package:jevahan/AllScreens/searchAmbulanceScreen;.dart';
 
-class optionsIntercity extends StatefulWidget {
-  static const String idScreen = "optionsMobileICU";
+class EmergDropDown extends StatefulWidget {
+  static const String idScreen = "emergency";
 
   @override
-  State<optionsIntercity> createState() => _optionsIntercityState();
+  State<EmergDropDown> createState() => _EmergDropDownState();
 }
 
-class _optionsIntercityState extends State<optionsIntercity> {
+class _EmergDropDownState extends State<EmergDropDown> {
   bool? isChecked1 = false;
   bool? isChecked2 = false;
   bool? isChecked3 = false;
@@ -30,7 +31,7 @@ class _optionsIntercityState extends State<optionsIntercity> {
           ),
           onPressed: () => {
             Navigator.pushNamedAndRemoveUntil(
-                context, MainScreen.idScreen, (route) => false),
+                context, homeScreenPage.idScreen, (route) => false),
           },
         ),
         foregroundColor: Colors.white,
@@ -45,7 +46,7 @@ class _optionsIntercityState extends State<optionsIntercity> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(40, 4, 0, 0),
                 child: Text(
-                  "Want to book\na Intercity?",
+                  "Patient's Condition",
                   style: GoogleFonts.poppins(
                       fontSize: 30,
                       color: Color(0xFF062833),
@@ -55,16 +56,6 @@ class _optionsIntercityState extends State<optionsIntercity> {
             ],
           ),
           SizedBox(height: 20),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-            child: Text(
-              "Select the specialisation below :",
-              style: GoogleFonts.poppins(
-                  fontSize: 15,
-                  color: Color(0xFF062833),
-                  fontWeight: FontWeight.w400),
-            ),
-          ),
           SizedBox(
             height: 13,
           ),
@@ -84,7 +75,7 @@ class _optionsIntercityState extends State<optionsIntercity> {
                           });
                         }),
                     Text(
-                      "Mobile ICU",
+                      "Heart Attack",
                       style: GoogleFonts.poppins(
                           fontSize: 15,
                           color: Color(0xFF062833),
@@ -107,7 +98,7 @@ class _optionsIntercityState extends State<optionsIntercity> {
                           });
                         }),
                     Text(
-                      "Organ Transfer",
+                      "Accident",
                       style: GoogleFonts.poppins(
                           fontSize: 15,
                           color: Color(0xFF062833),
@@ -130,7 +121,7 @@ class _optionsIntercityState extends State<optionsIntercity> {
                           });
                         }),
                     Text(
-                      "Mobile Mortuary",
+                      "Pregnancy",
                       style: GoogleFonts.poppins(
                           fontSize: 15,
                           color: Color(0xFF062833),
@@ -150,29 +141,6 @@ class _optionsIntercityState extends State<optionsIntercity> {
                         onChanged: (newBool) {
                           setState(() {
                             isChecked4 = newBool;
-                          });
-                        }),
-                    Text(
-                      "Non- Emergency Patient Transfer",
-                      style: GoogleFonts.poppins(
-                          fontSize: 15,
-                          color: Color(0xFF062833),
-                          fontWeight: FontWeight.w500),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(28, 0, 0, 0),
-                child: Row(
-                  children: [
-                    Checkbox(
-                        value: isChecked5,
-                        activeColor: Color(0xFF065734),
-                        splashRadius: 25,
-                        onChanged: (newBool) {
-                          setState(() {
-                            isChecked5 = newBool;
                           });
                         }),
                     Text(
@@ -218,8 +186,8 @@ class _optionsIntercityState extends State<optionsIntercity> {
                     ),
                   ),
                   onTap: () {
-                    Navigator.pushNamedAndRemoveUntil(
-                        context, homescreenicu.idScreen, (route) => false);
+                    Navigator.pushNamedAndRemoveUntil(context,
+                        searchAmbulanceScreen.idScreen, (route) => false);
                   },
                 ),
               ),

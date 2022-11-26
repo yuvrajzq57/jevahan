@@ -59,6 +59,7 @@ dependencies:
   url_launcher: ^6.1.7
   flutter_phone_direct_caller: ^2.1.1
   get: ^4.6.5
+  dio: ^4.0.6
 
 
 dev_dependencies:
@@ -94,6 +95,7 @@ flutter:
     - images/user.png
     - images/servicesmain.jpeg
     - images/iconmap.png
+    - images/medical-team.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

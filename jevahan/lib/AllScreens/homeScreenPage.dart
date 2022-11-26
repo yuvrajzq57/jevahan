@@ -21,6 +21,8 @@ class homeScreenPage extends StatefulWidget {
 }
 
 class _homeScreenPageState extends State<homeScreenPage> {
+  Position? _pickUpLocation;
+  double? distanceInM = 0.0;
   TextEditingController pickUpTextEditingController = TextEditingController();
   TextEditingController dropOffTextEditingController = TextEditingController();
   final String key = "AIzaSyA3QShZcuKPRUuNI4uYH_iceRisE1ENLPM";
@@ -144,7 +146,7 @@ class _homeScreenPageState extends State<homeScreenPage> {
             right: 0.0,
             bottom: 0.0,
             child: Container(
-              height: 260.0,
+              height: 300.0,
               decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -157,7 +159,7 @@ class _homeScreenPageState extends State<homeScreenPage> {
                     blurRadius: 16.0,
                     spreadRadius: 0.5,
                     offset: Offset(0.7, 0.7),
-                  )
+                  ),
                 ],
               ),
               child: Padding(
@@ -204,7 +206,15 @@ class _homeScreenPageState extends State<homeScreenPage> {
                       ),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 8,
+                    ),
+                    Text(
+                      "OR",
+                      style: GoogleFonts.poppins(
+                          textStyle: TextStyle(fontWeight: FontWeight.w700)),
+                    ),
+                    SizedBox(
+                      height: 8,
                     ),
                     Container(
                       height: 66,
@@ -274,6 +284,7 @@ class _homeScreenPageState extends State<homeScreenPage> {
                                   pickUpTextEditingController.text,
                                   dropOffTextEditingController.text,
                                 );
+
                                 _gotoDestionation(
                                   directions['start_location']['lat'],
                                   directions['start_location']['lng'],
@@ -364,4 +375,16 @@ class _homeScreenPageState extends State<homeScreenPage> {
 
     _setMarker(LatLng(lat, lng));
   }
+
+  // Future _getTheDistance() async {
+  //   var latlng1 = const LatLng(13.0306, 77.5649);
+  //   var latlng2 = const LatLng(12.8922, 77.5812);
+  //   // LatLng _pickUpLocation =
+  //   //     LocationService().getPlaceId(LatLng(latitude, longitude));
+
+  //   distanceInM = await Geolocator.distanceBetween(
+  //       start.latitude, start.longitude, finish.latitude, finish.longitude);
+
+  //   return distanceInM;
+  // }
 }
